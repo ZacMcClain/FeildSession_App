@@ -1,4 +1,4 @@
-First,Last,CWID,Email
+firstName,lastName,CWID,email
 Mickey,Mouse,123978,mmouse@mines.edu
 Donald,Duck,444321,dduck@mines.edu
 Jane,Jetson,999777,jjetson@mines.edu

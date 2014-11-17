@@ -18,21 +18,30 @@ Route::model('project', 'Project');
 
 // ------------------------| Home (Student) page Section |------------------------\\
 
-Route::get('/', function() // works
+Route::get('/', function() 
 {
-	return Redirect::to('students');
+	return Redirect::to('home');
 });
 
-Route::get('students', function () // works
+Route::get('home', function() 
+{
+	$projects = Project::all();
+	$users = User::all();
+	return View::make('students/index')
+		->with('projects', $projects)
+		->with('users', $users);
+});
+
+Route::get('students', function () 
 {
 	$user = User::all();
-	Return View::make('students/index')
+	return View::make('students')
 		->with('students', $user);
 });
 
 // ------------------------| login Section |------------------------\\
 
-Route::get('login', function() // works
+Route::get('login', function() 
 {
 	return View::make('login');
 });

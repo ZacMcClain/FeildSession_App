@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserAndProjectTables extends Migration {
+class AddUsersAndProjectsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,6 +12,7 @@ class AddUserAndProjectTables extends Migration {
 	 */
 	public function up()
 	{
+		Schema::dropIfExists('users');
 		Schema::create('users', function($table) {
 			$table->string('lastName');
 			$table->string('firstName');
@@ -21,10 +22,13 @@ class AddUserAndProjectTables extends Migration {
 			$table->boolean('is_admin');
 		});
 
+		Schema::dropIfExists('projects');
 		Schema::create('projects', function($table){
-			$table->increments('project_id');
+			$table->increments('id');
 			$table->string('company');
 			$table->string('title');
+			$table->integer('min');
+			$table->integer('max');
 		});
 	}
 
