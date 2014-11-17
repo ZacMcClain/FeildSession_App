@@ -11,7 +11,18 @@
 |
 */
 
+// ------------------------| Model Section |------------------------\\
+
+Route::model('user', 'User');
+
 Route::get('/', function()
 {
-	return View::make('hello');
+	return Redirect::to('students');
+});
+
+Route::get('students', function ()
+{
+	$user = User::all();
+	Return View::make('students/index')
+		->with('students', $user);
 });
