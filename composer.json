@@ -31,6 +31,9 @@
 			"php artisan key:generate"
 		]
 	},
+	"require": {
+        "flynsarmy/csv-seeder": "1.*"
+    },
 	"config": {
 		"preferred-install": "dist"
 	},

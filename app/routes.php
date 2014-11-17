@@ -10,21 +10,42 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::model('user', 'User');
-Route::model('project', 'Project');
 
 // ------------------------| Model Section |------------------------\\
 
 Route::model('user', 'User');
+Route::model('project', 'Project');
 
-Route::get('/', function()
+// ------------------------| Home (Student) page Section |------------------------\\
+
+Route::get('/', function() // works
 {
 	return Redirect::to('students');
 });
 
-Route::get('students', function ()
+Route::get('students', function () // works
 {
 	$user = User::all();
 	Return View::make('students/index')
 		->with('students', $user);
+});
+
+// ------------------------| login Section |------------------------\\
+
+Route::get('login', function() // works
+{
+	return View::make('login');
+});
+
+
+Route::post('login', function() // not sure if this is working yet
+{
+	if(Auth::attempt (Input::only('username', 'password')))
+	{
+		return Redirect::intended('/');
+	} else {
+		return Redirect::back()
+		-> withInput()
+		-> with('error', "Invalid credentials!");
+	}
 });
