@@ -10,6 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::model('user', 'User');
+Route::model('project', 'Project');
 
 // ------------------------| Model Section |------------------------\\
 
