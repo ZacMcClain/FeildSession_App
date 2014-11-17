@@ -1,14 +1,14 @@
 <?php
 use Flynsarmy\CsvSeeder\CsvSeeder;
 
-class UserTableSeeder extends CsvSeeder {
+class ProjectTableSeeder extends CsvSeeder {
 	public function __construct() {
-		$this->table = 'users';
+		$this->table = 'projects';
 		$this->filename = app_path().'/students.csv';
 	}
 
 	public function run() {
-		DB::table('users')->delete();
+		DB::table('projects')->delete();
 
 		DB::disableQueryLog();
 
