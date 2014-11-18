@@ -18,7 +18,7 @@ class UserTableSeeder extends CsvSeeder {
 				array(
 					'lastName'=>'top',
 					'firstName'=>'admin',
-					'CWID'=>'00000000',
+					'CWID'=>Hash::make('12345678'),
 					'email'=>'admin@admin.com',
 					'is_admin'=>true
 				)

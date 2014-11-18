@@ -10,13 +10,13 @@
 
 	{{Form::open()}}
 		<div class="form-group">
-			{{Form::label('Username')}} 
-			{{Form::text('username')}}
+			{{Form::label('Email')}} 
+			{{Form::text('email')}}
 		</div>
 
 		<div class="form-group">
-			{{Form::label('Password')}} 
-			{{Form::password('password')}}
+			{{Form::label('CWID')}} 
+			{{Form::password('cwid')}}
 		</div>
 		{{Form::submit("Log in", array("class"=>"btn btn-default"))}}
 	{{Form::close()}}

@@ -49,7 +49,7 @@ Route::get('login', function()
 
 Route::post('login', function() // not sure if this is working yet
 {
-	if(Auth::attempt (Input::only('username', 'password')))
+	if(Auth::attempt (Input::only('email', 'CWID')))
 	{
 		return Redirect::intended('/');
 	} else {
