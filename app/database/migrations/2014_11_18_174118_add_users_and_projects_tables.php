@@ -17,7 +17,7 @@ class AddUsersAndProjectsTables extends Migration {
 			$table->increments('id');
 			$table->string('lastName');
 			$table->string('firstName');
-			$table->string('CWID');
+			$table->varchar('CWID', 255);
 			$table->string('email');
 			$table->boolean('is_admin');
 		});
