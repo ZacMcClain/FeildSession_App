@@ -46,10 +46,9 @@ Route::get('login', function()
 	return View::make('login');
 });
 
-
-Route::post('login', function() // not sure if this is working yet
+Route::post('login', function()
 {
-	if(Auth::attempt (Input::only('username', 'password')))
+	if(Auth::attempt(Input::only('email', Hash::make('CWID'))))
 	{
 		return Redirect::intended('/');
 	} else {
@@ -57,4 +56,9 @@ Route::post('login', function() // not sure if this is working yet
 		-> withInput()
 		-> with('error', "Invalid credentials!");
 	}
+});
+
+Route::get('logout', function() {
+	Auth::logout();
+	return Redirect::to('/');
 });
