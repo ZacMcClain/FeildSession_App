@@ -46,18 +46,21 @@ Route::get('login', function()
 	return View::make('login');
 });
 
-Route::post('login', function()
-{
+Route::post('login', function(){
 
-	if(Auth::attempt(Input::only('email', Hash::make('CWID'))))
+	$user = User::where('email', '=', Input::get('email'))->first();
 
-	{
+	if(Hash::check(Input::get('cwid'), $user->CWID)) {
+		Auth::login($user);
 		return Redirect::intended('/');
-	} else {
+	}
+
+	//if(Auth::attempt(Input::only('email','cwid'))) 
+	//	return Redirect::intended('/');
+	else 
 		return Redirect::back()
 		-> withInput()
 		-> with('error', "Invalid credentials!");
-	}
 });
 
 Route::get('logout', function() {

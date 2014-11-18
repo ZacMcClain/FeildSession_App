@@ -17,7 +17,7 @@
 
 			<div class="text-right">
 				@if(Auth::check())
-					Logged in as <strong>{{Auth::user() -> username}}</strong> -
+					Logged in as <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}</strong> -
 					<a href="{{URL::to('logout?_token='.csrf_token())}}">Log out</a>
 				@else
 					<a href="{{URL::to('login')}}">Log in</a>

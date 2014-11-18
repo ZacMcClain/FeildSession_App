@@ -20,7 +20,7 @@
 <ul>
 	@foreach($users as $user)
 		<div class="user">
-				<li> {{$user->firstName}} {{$user->lastName}} {{$user->email}} {{$user->CWID}} {{$user->is_admin}} </li>
+				<li> <strong>{{$user->firstName}} {{$user->lastName}} </strong> : {{$user->email}} {{$user->CWID}} {{$user->is_admin}} </li>
 		</div>
 	@endforeach
 </ul>

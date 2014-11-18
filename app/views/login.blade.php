@@ -8,6 +8,7 @@
 
 @section('content')
 
+	
 	{{Form::open()}}
 		<div class="form-group">
 			{{Form::label('Email')}} 
