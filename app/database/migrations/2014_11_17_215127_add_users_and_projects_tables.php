@@ -18,7 +18,6 @@ class AddUsersAndProjectsTables extends Migration {
 			$table->string('firstName');
 			$table->increments('CWID');
 			$table->string('email');
-			$table->string('password');
 			$table->boolean('is_admin');
 		});
 

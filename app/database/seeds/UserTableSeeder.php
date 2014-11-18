@@ -16,9 +16,17 @@ class UserTableSeeder extends CsvSeeder {
 
 		parent::run();
 
-		//DB::table('users')->insert(array(
-		//	array('lastName'=>'', 'firstName'=>'admin', 'CWID'=>00000000, 'email'=>'admin@admin.com', 'password'=>'kittenz', 'is_admin'=>true);
-		//));
+		DB::table('users')->insert(
+			array(
+				array(
+					'lastName'=>'top',
+					'firstName'=>'admin',
+					'CWID'=>'00000000',
+					'email'=>'admin@admin.com',
+					'is_admin'=>true
+				)
+			)
+		);
 
 	}
 }
