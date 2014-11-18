@@ -14,10 +14,7 @@ class UserTableSeeder extends CsvSeeder {
 
 		DB::table($this->table)->truncate();
 
-		parent::run();
-
 		DB::table('users')->insert(
-			array(
 				array(
 					'lastName'=>'top',
 					'firstName'=>'admin',
@@ -25,8 +22,11 @@ class UserTableSeeder extends CsvSeeder {
 					'email'=>'admin@admin.com',
 					'is_admin'=>true
 				)
-			)
 		);
+		
+		parent::run();
+
+		
 
 	}
 }
