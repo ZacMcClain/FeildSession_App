@@ -16,7 +16,7 @@ class AddUsersAndProjectsTables extends Migration {
 		Schema::create('users', function($table) {
 			$table->string('lastName');
 			$table->string('firstName');
-			$table->increments('CWID');
+			$table->string('CWID');
 			$table->string('email');
 			$table->boolean('is_admin');
 		});

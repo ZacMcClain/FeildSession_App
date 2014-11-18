@@ -7,6 +7,9 @@ class UserTableSeeder extends CsvSeeder {
 		$this->filename = app_path().'/students.csv';
 	}
 
+	//Need to override protected variable
+	protected $hashable = 'CWID';
+	
 	public function run() {
 		DB::table('users')->delete();
 
