@@ -48,9 +48,7 @@ Route::get('login', function()
 
 Route::post('login', function()
 {
-
-	if(Auth::attempt(Input::only('email', Hash::make('CWID'))))
-
+	if(Auth::attempt(Input::only('email', 'CWID')))
 	{
 		return Redirect::intended('/');
 	} else {
