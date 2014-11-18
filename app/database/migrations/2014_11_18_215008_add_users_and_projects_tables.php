@@ -10,15 +10,17 @@ class AddUsersAndProjectsTables extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+		public function up()
 	{
 		Schema::dropIfExists('users');
 		Schema::create('users', function($table) {
+			$table->increments('id');
 			$table->string('lastName');
 			$table->string('firstName');
 			$table->string('CWID');
 			$table->string('email');
 			$table->boolean('is_admin');
+			$table->string('remember_token')->nullable();
 		});
 
 		Schema::dropIfExists('projects');
