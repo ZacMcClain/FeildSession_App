@@ -17,11 +17,14 @@
 </ul>
 
 <h3> Students: </h3>
-<ul>
-	@foreach($users as $user)
-		<div class="user">
-				<li> <strong>{{$user->firstName}} {{$user->lastName}} </strong> : {{$user->email}} {{$user->CWID}} {{$user->is_admin}} </li>
-		</div>
-	@endforeach
-</ul>
+
+	<table>
+		@foreach($users as $user)
+			<tr>
+					<td> <strong>{{$user->firstName}}</strong> </td>
+					<td><strong>{{$user->lastName}}</strong></td>
+					<td>{{$user->email}} </td>
+			</tr>
+		@endforeach
+	</table>
 @stop
