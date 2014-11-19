@@ -8,13 +8,24 @@
 
 @section('content')
 <h3> Students: </h3>
-<ul>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email Address</th>
+		</tr>
+	</thead>
+	<tbody>
 	@foreach($users as $user)
-		<div class="user">
-				<li> <strong>{{$user->firstName}} {{$user->lastName}} </strong> </li>
-		</div>
+		<tr>
+			<td><strong>{{$user->firstName}}</strong></td>
+			<td><strong>{{$user->lastName}}</strong></td>
+			<td>{{$user->email}}</td>
+		</tr>
 	@endforeach
-</ul>
+	</tbody>
+</table>
 
 <h3> Projects: </h3>
 <ul>
