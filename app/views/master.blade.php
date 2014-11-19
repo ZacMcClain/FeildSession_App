@@ -8,7 +8,7 @@
 			}
 		</style>
 		<title>Field Session Helper</title>
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css" />
 	</head>
 
 
@@ -19,12 +19,13 @@
 		
 			<div class="text-right">
 				@if(Auth::check())
-					Logged in as <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}</strong> -
-					<a href="{{URL::to('logout?_token='.csrf_token())}}">Log out</a>
+					<a href="{{URL::to('home')}}" class = "pull-left"> <= Index</a>
+					Logged in as <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}</strong>   |
+					<a href="{{URL::to('logout?_token='.csrf_token())}}" class = "btn btn-primary pull-right">Log out</a>
 					<br>
-					<a href="{{URL::to('home')}}">Index</a>
+					
 				@else
-					<a href="{{URL::to('login')}}">Log in</a>
+					<a href="{{URL::to('login')}}" class = "btn btn-primary pull-right">Log in</a>
 				@endif
 				
 			</div>
