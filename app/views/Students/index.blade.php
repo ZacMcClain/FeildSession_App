@@ -2,11 +2,20 @@
 
 @section('header')
 <h2>
-	CSCI Field Session 
+	CSCI Field Session Index
 </h2>
 @stop
 
 @section('content')
+<h3> Students: </h3>
+<ul>
+	@foreach($users as $user)
+		<div class="user">
+				<li> <strong>{{$user->firstName}} {{$user->lastName}} </strong> </li>
+		</div>
+	@endforeach
+</ul>
+
 <h3> Projects: </h3>
 <ul>
 	@foreach($projects as $project)
@@ -15,16 +24,4 @@
 		</div>
 	@endforeach
 </ul>
-
-<h3> Students: </h3>
-
-	<table>
-		@foreach($users as $user)
-			<tr>
-					<td> <strong>{{$user->firstName}}</strong> </td>
-					<td><strong>{{$user->lastName}}</strong></td>
-					<td>{{$user->email}} </td>
-			</tr>
-		@endforeach
-	</table>
 @stop
