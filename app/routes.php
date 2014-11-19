@@ -18,9 +18,11 @@ Route::model('project', 'Project');
 
 // ------------------------| Home (Student) page Section |------------------------\\
 
+Route::group(array('before'=>'auth'), function() {
+
 Route::get('/', function() 
 {
-	return Redirect::to('home');
+	return Redirect::to('students');
 });
 
 Route::get('home', function() 
@@ -35,8 +37,10 @@ Route::get('home', function()
 Route::get('students', function () 
 {
 	$user = User::all();
-	return View::make('students')
+	return View::make('students/students')
 		->with('students', $user);
+});
+
 });
 
 // ------------------------| login Section |------------------------\\
@@ -45,6 +49,10 @@ Route::get('login', function()
 {
 	return View::make('login');
 });
+
+Route::get('login', array('before'=>'guest', function() {
+	return View::make('login');
+}));
 
 Route::post('login', function(){
 
@@ -65,5 +73,5 @@ Route::post('login', function(){
 
 Route::get('logout', function() {
 	Auth::logout();
-	return Redirect::to('/');
+	return Redirect::to('login');
 });

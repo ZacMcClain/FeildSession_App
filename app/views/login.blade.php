@@ -2,7 +2,7 @@
 
 @section('header')
 
-	<h2>Please Log In</h2>
+	<h2>CSCI370 Log In</h2>
 
 @stop
 
