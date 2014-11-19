@@ -14,6 +14,7 @@
 
 	<body>
 
+	<nav class="navbar navbar-default" role="navigation" style="padding:5px;">
 		<div class="container-fluid"> 
 			<ul class="nav nav-pills">
    				<li class="active"><a href="{{URL::to('home')}}"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
@@ -28,6 +29,7 @@
     			@endif
   			</ul>
 		</div>
+	</nav>
 
 		<div class="container">
 			<div class="page-header"> 
