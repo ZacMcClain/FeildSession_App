@@ -42,6 +42,14 @@ Route::get('students', function ()
 });
 
 });
+// ------------------------| Project Section |------------------------\\
+
+Route::get('projects', function()
+{
+	$projects = Project::all();
+	return View::make('projects/projects')
+		->with('projects', $projects);
+});
 
 // ------------------------| login Section |------------------------\\
 

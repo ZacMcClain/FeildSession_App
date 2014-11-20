@@ -18,11 +18,11 @@
 		<div class="container-fluid"> 
 			<ul class="nav nav-pills">
    				<li class="active"><a href="{{URL::to('home')}}"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
-    			<li><a href="#">Projects</a></li>
+    			<li><a href="{{URL::to('projects')}}">Projects</a></li>
     			<li><a href="#">Forms</a></li>
     			@if(Auth::check())
     				<li class="pull-right"><a class="btn btn-info" href="{{URL::to('logout?_token='.csrf_token())}}">Log Out</a></li>
-    				<li class="pull-right">Logged in as <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}  </li>
+    				<li class="pull-right">Hello <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}     </li>
     				
     			@else
     				<li class="pull-right"><a class="btn btn-info" href="{{URL::to('login')}}">Log In</a></li>

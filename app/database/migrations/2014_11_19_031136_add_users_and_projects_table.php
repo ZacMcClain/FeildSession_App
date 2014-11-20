@@ -15,8 +15,8 @@ class AddUsersAndProjectsTable extends Migration {
 		Schema::dropIfExists('users');
 		Schema::create('users', function($table) {
 			$table->increments('id');
-			$table->string('lastName');
 			$table->string('firstName');
+			$table->string('lastName');
 			$table->string('CWID');
 			$table->string('email');
 			$table->boolean('is_admin');

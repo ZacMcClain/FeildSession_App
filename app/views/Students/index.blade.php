@@ -11,16 +11,14 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
+			<th>Name</th>
 			<th>Email Address</th>
 		</tr>
 	</thead>
 	<tbody>
 	@foreach($users as $user)
 		<tr>
-			<td><strong>{{$user->firstName}}</strong></td>
-			<td><strong>{{$user->lastName}}</strong></td>
+			<td><strong><a href="#">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
 			<td>{{$user->email}}</td>
 		</tr>
 	@endforeach
