@@ -3,7 +3,7 @@
 
 	<head>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css" />
-		<meta charset="UTF-8">
+		<!-- <script type="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
 		<title>Field Session Helper</title>
 		<style type="text/css">
 			html{
@@ -20,9 +20,12 @@
    				<li class="active"><a href="{{URL::to('home')}}"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
     			<li><a href="{{URL::to('projects')}}">Projects</a></li>
     			<li><a href="#">Forms</a></li>
+    			@if (Auth::check() and Auth::user()->canSee())
+    				<li><a href="#">Admin View</a></li>
+    			@endif
     			@if(Auth::check())
     				<li class="pull-right"><a class="btn btn-info" href="{{URL::to('logout?_token='.csrf_token())}}">Log Out</a></li>
-    				<li class="pull-right">Hello <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}     </li>
+    				<li class="pull-right" style='padding-right: 5px;'>Hello <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}</li>
     				
     			@else
     				<li class="pull-right"><a class="btn btn-info" href="{{URL::to('login')}}">Log In</a></li>

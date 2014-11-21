@@ -20,11 +20,14 @@ class UserTableSeeder extends CsvSeeder {
 
 		DB::table('users')->insert(
 				array(
-					'firstName' => 'top',
-					'lastName' => 'admin',
+					'id' => '1',
+					'firstName' => 'Top',
+					'lastName' => 'Admin',
 					'CWID' => Hash::make('12345678'),
-					'email' => 'admin@admin.com',
-					'is_admin' => TRUE
+					'email' => 'admin@mines.edu',
+					'is_admin' => TRUE,
+					'created_at' => new DateTime,
+					'updated_at' => new DateTime
 				)
 		);
 		

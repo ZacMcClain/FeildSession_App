@@ -20,28 +20,29 @@ Route::model('project', 'Project');
 
 Route::group(array('before'=>'auth'), function() {
 
-Route::get('/', function() 
-{
-	return Redirect::to('students');
+	Route::get('/', function() 
+	{
+		return Redirect::to('students');
+	});
+
+	Route::get('home', function() 
+	{
+		$projects = Project::all();
+		$users = User::all();
+		return View::make('students/index')
+			->with('projects', $projects)
+			->with('users', $users);
+	});
+
+	Route::get('students', function () 
+	{
+		$user = User::all();
+		return View::make('students/students')
+			->with('students', $user);
+	});
+
 });
 
-Route::get('home', function() 
-{
-	$projects = Project::all();
-	$users = User::all();
-	return View::make('students/index')
-		->with('projects', $projects)
-		->with('users', $users);
-});
-
-Route::get('students', function () 
-{
-	$user = User::all();
-	return View::make('students/students')
-		->with('students', $user);
-});
-
-});
 // ------------------------| Project Section |------------------------\\
 
 Route::get('projects', function()
@@ -53,10 +54,6 @@ Route::get('projects', function()
 
 // ------------------------| login Section |------------------------\\
 
-Route::get('login', function() 
-{
-	return View::make('login');
-});
 
 Route::get('login', array('before'=>'guest', function() {
 	return View::make('login');
