@@ -16,10 +16,11 @@
 Route::model('user', 'User');
 Route::model('project', 'Project');
 
-// ------------------------| Home (Student) page Section |------------------------\\
+
 
 Route::group(array('before'=>'auth'), function() {
 
+	// -----------------------| Home (Student) page Section |---------------------\\
 	Route::get('/', function() 
 	{
 		return Redirect::to('students');
@@ -41,6 +42,8 @@ Route::group(array('before'=>'auth'), function() {
 			->with('students', $user);
 	});
 
+	// ------------------------| Form Section |------------------------\\
+
 });
 
 // ------------------------| Project Section |------------------------\\
@@ -51,6 +54,8 @@ Route::get('projects', function()
 	return View::make('projects/projects')
 		->with('projects', $projects);
 });
+
+
 
 // ------------------------| login Section |------------------------\\
 
