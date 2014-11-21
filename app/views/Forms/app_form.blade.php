@@ -25,7 +25,7 @@
 					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3'
+  					'project_3' => 'Titel 3'
   				]
 			) }}
 			<br>
@@ -36,7 +36,7 @@
 					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3'
+  					'project_3' => 'Titel 3'
   				]
 			) }}
 			<br>
@@ -47,7 +47,7 @@
 					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3'
+  					'project_3' => 'Titel 3'
   				]
 			) }}
 			<br>
@@ -58,7 +58,7 @@
 					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3'
+  					'project_3' => 'Titel 3'
   				]
 			) }}
 		</div>

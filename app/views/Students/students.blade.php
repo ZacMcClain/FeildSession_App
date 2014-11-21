@@ -6,9 +6,10 @@
 
 @section('content')
 Currently Logged in as:
-<br>
-<strong> First Name: </strong> {{Auth::user() -> firstName}}
-<br>
-<strong> Last Name: </strong> {{Auth::user() -> lastName}}
-	
+<div class="container-fluid">
+	<br>
+	<strong> First Name: </strong> {{Auth::user() -> firstName}}
+	<br>
+	<strong> Last Name: </strong> {{Auth::user() -> lastName}}
+</div>
 @stop

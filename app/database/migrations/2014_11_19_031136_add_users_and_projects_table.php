@@ -41,8 +41,8 @@ class AddUsersAndProjectsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');
-		Schema::drop('projects');
+		Schema::dropIfExists('users');
+		Schema::dropIfExists('projects');
 	}
 
 

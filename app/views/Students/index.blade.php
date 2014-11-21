@@ -26,11 +26,24 @@
 </table>
 
 <h3> Projects: </h3>
-<ul>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th><strong>Project Title</strong></th>
+			<th><strong>Company<strong></th>
+			<th>Minimum Memebers</th>
+			<th>Maximum Memebers</th>
+		</tr>
+	</thead>
+	<tbody>
 	@foreach($projects as $project)
-		<div class="project">
-				<li> <strong> {{$project->title}} </strong> - {{$project->company}}</li>
-		</div>
+		<tr>
+			<td><a href="#">{{$project->title}}</a></td>
+			<td>{{$project->company}}</td>
+			<td>{{$project->min}}</td>
+			<td>{{$project->max}}</td>
+		</tr>
 	@endforeach
-</ul>
+	</tbody>
+</table>
 @stop

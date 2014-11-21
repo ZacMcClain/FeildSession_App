@@ -30,16 +30,16 @@ Route::group(array('before'=>'auth'), function() {
 	{
 		$projects = Project::all();
 		$users = User::all();
-		return View::make('students/index')
+		return View::make('students/student')
 			->with('projects', $projects)
 			->with('users', $users);
 	});
 
-	Route::get('students', function () 
+	Route::get('students', function ()
 	{
 		$user = User::all();
 		return View::make('students/students')
-			->with('students', $user);
+			->with('student', $user);
 	});
 
 	// ------------------------| Form Section |------------------------\\
