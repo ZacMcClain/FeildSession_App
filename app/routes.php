@@ -30,7 +30,7 @@ Route::group(array('before'=>'auth'), function() {
 	{
 		$projects = Project::all();
 		$users = User::all();
-		return View::make('students/student')
+		return View::make('students/index')
 			->with('projects', $projects)
 			->with('users', $users);
 	});
