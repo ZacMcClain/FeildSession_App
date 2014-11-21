@@ -44,6 +44,15 @@ Route::group(array('before'=>'auth'), function() {
 
 	// ------------------------| Form Section |------------------------\\
 
+	Route::get('app_form', function()
+	{
+		$projects = Project::all();
+		$users = User::all();
+		return View::make('forms/app_form')
+			->with('projects', $projects)
+			->with('students', $users);
+	});
+
 });
 
 // ------------------------| Project Section |------------------------\\
