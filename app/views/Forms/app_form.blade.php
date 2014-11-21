@@ -20,45 +20,79 @@
 
 		<div class="form-group">
 			{{Form::label('First Choice:')}} 
-			{{ Form::select('firstChoice', [
+			{{ Form::select('firstChoice', 
+				[
+					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3']
+  					'pr0ject_3' => 'Titel 3'
+  				]
 			) }}
 			<br>
 
 			{{Form::label('Second Choice:')}} 
-			{{ Form::select('secondChoice', [
+			{{ Form::select('secondChoice', 
+				[
+					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3']
+  					'pr0ject_3' => 'Titel 3'
+  				]
 			) }}
 			<br>
 
 			{{Form::label('Third Choice:')}} 
-			{{ Form::select('thirdChoice', [
+			{{ Form::select('thirdChoice', 
+				[
+					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3']
+  					'pr0ject_3' => 'Titel 3'
+  				]
 			) }}
 			<br>
 
 			{{Form::label('Fourth Choice:')}} 
-			{{ Form::select('fourthChoice', [
+			{{ Form::select('fourthChoice', 
+				[
+					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
    					'project_2' => 'Titel 2',
-  					'pr0ject_3' => 'Titel 3']
+  					'pr0ject_3' => 'Titel 3'
+  				]
 			) }}
 		</div>
 
 		<div class="form-group">
 			{{Form::label('Perferred Teammate(s):')}}
 			{{Form::text('pref_1')}}
+			<br>
+			{{Form::label('Not Perferred Teammate(s):')}} 
+			{{Form::text('unpref_1')}}
 		</div>
 
 		<div class="form-group">
-			{{Form::label('Not Perferred Teammate(s):')}} 
-			{{Form::text('unpref_1')}}
+			{{Form::label('Helpful info:')}}
+			<p class="small">
+				Please share any other experience, skill or goals that might
+				be relevant to your project choices. 
+			</p>
+			{{Form::textArea('experience')}}
+		</div>
+
+		<div class="form-group">
+			{{Form::label('Matters Most:')}}
+			<p class="small">
+				When selecting teams what matters more to you?
+			</p>
+			{{ Form::select('mostImportant', 
+					[
+					'null' => 'Unselected',
+   					'project' => 'Project',
+   					'team' => 'Team',
+  					'dontCare' => 'Does Not Matter'
+  					]
+			) }}
 		</div>
 
 		{{Form::submit("Submin", array("class"=>"btn btn-default"))}}
