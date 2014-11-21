@@ -63,7 +63,7 @@ Route::post('login', function(){
 
 	$user = User::where('email', '=', Input::get('email'))->first();
 
-	if(Hash::check(Input::get('cwid'), $user->CWID)) {
+	if($user != null && Hash::check(Input::get('cwid'), $user->CWID)) {
 		Auth::login($user);
 		return Redirect::intended('/');
 	}
