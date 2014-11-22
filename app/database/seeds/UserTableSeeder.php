@@ -6,7 +6,7 @@ class UserTableSeeder extends CsvSeeder {
 	
 	public function __construct() {
 		$this->table = 'users';
-		$this->filename = app_path().'/students.csv';
+		$this->filename = app_path().'/src/students.csv';
 	}
 
 	//Need to override protected variable

@@ -5,7 +5,7 @@ class ProjectTableSeeder extends CsvSeeder {
 	
 	public function __construct() {
 		$this->table = 'projects';
-		$this->filename = app_path().'/projects.csv';
+		$this->filename = app_path().'/src/projects.csv';
 	}
 
 	public function run() {

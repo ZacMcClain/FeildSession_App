@@ -11,17 +11,17 @@
 |
 */
 
-// ------------------------| Model Section |------------------------\\
+//------------------------| Model Section |------------------------\\
 
 Route::model('user', 'User');
 Route::model('project', 'Project');
 Route::model('preference', 'Preference');
 
-// ------------------------| Logged In Section |------------------------\\
+//------------------------| Logged In Section |------------------------\\
 
 Route::group(array('before'=>'auth'), function() {
 
-	// -----------------------| Home (Student) page Section |---------------------\\
+	//-----------------------| Home (Student) page Section |---------------------\\
 	Route::get('/', function() 
 	{
 		return Redirect::to('students');
@@ -50,7 +50,7 @@ Route::group(array('before'=>'auth'), function() {
 			->with('student', $user);
 	});
 
-	// ------------------------| Form Section |------------------------\\
+	//------------------------| Form Section |------------------------\\
 
 	Route::get('app_form', function()
 	{
@@ -59,13 +59,26 @@ Route::group(array('before'=>'auth'), function() {
 		$preferences = Preference::all();
 		return View::make('forms/app_form')
 			->with('projects', $projects)
-			->with('students', $users)
+			->with('users', $users)
+			->with('preferences', $preferences);
+	});
+
+	//----------------------| Administration Section |----------------------\\
+
+	Route::get('admin_index', function()
+	{
+		$projects = Project::all();
+		$users = User::all();
+		$preferences = Preference::all();
+		return View::make('admin/admin_index')
+			->with('projects', $projects)
+			->with('users', $users)
 			->with('preferences', $preferences);
 	});
 
 });
 
-// ------------------------| Project Section |------------------------\\
+//------------------------| Project Section |------------------------\\
 
 Route::get('projects', function()
 {
@@ -81,7 +94,7 @@ Route::get('projects/{id}', function($id)
 		->with('project', $project);
 });
 
-// ------------------------| login Section |------------------------\\
+//------------------------| login Section |------------------------\\
 
 
 Route::get('login', array('before'=>'guest', function() {

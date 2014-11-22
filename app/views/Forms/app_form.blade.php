@@ -20,7 +20,7 @@
 
 		<div class="form-group">
 			{{Form::label('First Choice:')}} 
-			{{ Form::select('firstChoice', 
+			{{Form::select('firstChoice', 
 				[
 					'null' => 'Unselected',
    					'project_1' => 'Titel 1',
