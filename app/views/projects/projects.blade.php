@@ -18,7 +18,7 @@
 		<tbody>
 		@foreach($projects as $project)
 			<tr>
-				<td><a href="#">{{$project->title}}</a></td>
+				<td><a href="{{URL::to('projects/'.$project->id)}}">{{$project->title}}</a></td>
 				<td>{{$project->company}}</td>
 				<td>{{$project->min}}</td>
 				<td>{{$project->max}}</td>

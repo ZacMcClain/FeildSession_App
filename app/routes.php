@@ -56,9 +56,11 @@ Route::group(array('before'=>'auth'), function() {
 	{
 		$projects = Project::all();
 		$users = User::all();
+		$preferences = Preference::all();
 		return View::make('forms/app_form')
 			->with('projects', $projects)
-			->with('students', $users);
+			->with('students', $users)
+			->with('preferences', $preferences);
 	});
 
 });
@@ -70,6 +72,13 @@ Route::get('projects', function()
 	$projects = Project::all();
 	return View::make('projects/projects')
 		->with('projects', $projects);
+});
+
+Route::get('projects/{id}', function($id)
+{
+	$project = Project::find($id);
+	return View::make('projects.single')
+		->with('project', $project);
 });
 
 // ------------------------| login Section |------------------------\\
