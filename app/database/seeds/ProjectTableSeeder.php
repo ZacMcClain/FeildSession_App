@@ -2,6 +2,7 @@
 use Flynsarmy\CsvSeeder\CsvSeeder;
 
 class ProjectTableSeeder extends CsvSeeder {
+	
 	public function __construct() {
 		$this->table = 'projects';
 		$this->filename = app_path().'/projects.csv';

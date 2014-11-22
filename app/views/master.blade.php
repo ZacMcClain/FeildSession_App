@@ -20,7 +20,7 @@
    				<li class="active"><a href="{{URL::to('home')}}"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
     			<li><a href="{{URL::to('projects')}}">Projects</a></li>
     			<li><a href="{{URL::to('app_form')}}">Forms</a></li>
-    			@if (Auth::check() and Auth::user()->canSee())
+    			@if(Auth::check() and Auth::user()->canSee())
     				<li><a href="#">Admin View</a></li>
     			@endif
     			@if(Auth::check())

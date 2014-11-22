@@ -21,6 +21,7 @@ class AddUsersAndProjectsTable extends Migration {
 			$table->string('email');
 			$table->boolean('is_admin');
 			$table->string('remember_token')->nullable();
+			$table->integer('preference_id')->nullable();
 			$table->nullableTimestamps();
 		});
 

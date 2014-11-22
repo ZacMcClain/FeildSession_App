@@ -27,11 +27,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $hidden = array('remember_token');
 
-	protected $fillable = array('firstName', 'lastName', 'CWID', 'email', 'preference_id');
+	protected $fillable = array(
+								'firstName',
+								'lastName',
+								'CWID',
+								'email',
+								'is_admin',
+								'preference_id'
+							);
 
 	public function canSee() // used to hide elements from non-admin users
 	{
-		return $this->is_admin or $this->owns($preference);
+		return $this->is_admin;
 	}
 
 	public function preference() // used to make a connection between users and books

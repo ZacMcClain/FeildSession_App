@@ -15,8 +15,9 @@
 
 Route::model('user', 'User');
 Route::model('project', 'Project');
+Route::model('preference', 'Preference');
 
-
+// ------------------------| Logged In Section |------------------------\\
 
 Route::group(array('before'=>'auth'), function() {
 
@@ -64,8 +65,6 @@ Route::get('projects', function()
 		->with('projects', $projects);
 });
 
-
-
 // ------------------------| login Section |------------------------\\
 
 
@@ -81,7 +80,6 @@ Route::post('login', function(){
 		Auth::login($user);
 		return Redirect::intended('/');
 	}
-
 	//if(Auth::attempt(Input::only('email','cwid'))) 
 	//	return Redirect::intended('/');
 	else 
