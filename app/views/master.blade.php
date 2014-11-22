@@ -17,13 +17,13 @@
 	<nav class="navbar navbar-default" role="navigation" style="padding:5px;">
 		<div class="container-fluid"> 
 			<ul class="nav nav-pills">
-   				<li class="active"><a href="{{URL::to('home')}}"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
-    			<li><a href="{{URL::to('projects')}}">Projects</a></li>
-    			<li><a href="{{URL::to('app_form')}}">Forms</a></li>
-    			@if(Auth::check() and Auth::user()->canSee())
+    			@if(Auth::check())
+					<li class="active"><a href="{{URL::to('home')}}"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="{{URL::to('projects')}}">Projects</a></li>
+					<li><a href="{{URL::to('app_form')}}">Forms</a></li>
+    			@if (Auth::check() and Auth::user()->canSee())
     				<li><a href="#">Admin View</a></li>
     			@endif
-    			@if(Auth::check())
     				<li class="pull-right"><a class="btn btn-info" href="{{URL::to('logout?_token='.csrf_token())}}">Log Out</a></li>
     				<li class="pull-right" style='padding-right: 5px;'>Hello <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}</li>
     				

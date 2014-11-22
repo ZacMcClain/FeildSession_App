@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<h3> Students: </h3>
+{{--<h3> Students: </h3>
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
@@ -24,7 +24,10 @@
 	@endforeach
 	</tbody>
 </table>
-
+--}}
+<p>
+Welcome to CS Field Session!
+</p>
 <h3> Projects: </h3>
 <table class="table table-striped table-bordered">
 	<thead>
