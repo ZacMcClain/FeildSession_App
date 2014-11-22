@@ -1,0 +1,39 @@
+firstName,lastName,CWID,email,is_admin
+Mickey,Mouse,123978,mmouse@mines.edu,FALSE
+Donald,Duck,444321,dduck@mines.edu,FALSE
+Jane,Jetson,999777,jjetson@mines.edu,FALSE
+Frodo,Baggins,555123,fbaggins@mines.edu,FALSE
+Bilbo,Baggins,988777,bbaggins@mines.edu,FALSE
+Winnie,Poohbear,478234,pbear@mines.edu,FALSE
+Daffy,Duck,120978,daduck@mines.edu,FALSE
+Wile,Coyote,409123,wcoyote@mines.edu,FALSE
+Road,Runner,128745,rrunner@mines.edu,FALSE
+Marge,Simpson,765120,msimpson@mines.edu,FALSE
+Charlie,Brown,876123,cbrown@mines.edu,FALSE
+Lucy,VanPelt,333221,lvanpelt@mines.edu,FALSE
+Bugs,Bunny,752412,bbunny@mines.edu,FALSE
+Betty,Boop,532109,bboop@mines.edu,FALSE
+Lois,Griffin,223311,lgriffin@mines.edu,FALSE
+Wilma,Flintstone,443322,wflintstone@mines.edu,FALSE
+Fred ,Flintstone,443311,fflintstone@mines.edu,FALSE
+Peppa,Pig,784512,ppig@mines.edu,FALSE
+Turanga,Leela,834215,leela@mines.edu,FALSE
+Sylvester,Cat,920451,scat@mines.edu,FALSE
+Felix,Cat,375621,fcat@mines.edu,FALSE
+Top,Cat,781234,tc@mines.edu,FALSE
+Scooby,Doo,392875,scooby@mines.edu,FALSE
+Porky,Pig,123654,porky@mines.edu,FALSE
+Garfield,Cat,387612,garfield@mines.edu,FALSE
+Peter,Pan,982765,pan@mines.edu,FALSE
+Foghorn,Leghorn,762341,fleghorn@mines.edu,FALSE
+Manning, Peyton,772233, pmanning@mines.edu,FALSE
+Welker, Wes,123456, wwelker@mines.edu,FALSE
+Thomas, Julias,123457, jthomas@mines.edu,FALSE
+Sanders, Emmanuel,123458, esanders@mines.edu,FALSE
+Tamme, Jason,123569, jtamme@mines.edu,FALSE
+Knighton, Terrance,123450, tk@mines.edu,FALSE
+Colquitt, Britton,98765, bcol@mines.edu,FALSE
+Roby, Bradley,98764, broby@mines.edu,FALSE
+Ward, T.J.,98763, tjward@mines.edu,FALSE
+Ware, DeMarcus,98762, dware@mines.edu,FALSE
+Webster, Kayvon,98761, kw@mines.edu,FALSE
