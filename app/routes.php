@@ -41,6 +41,13 @@ Route::group(array('before'=>'auth'), function() {
 		return View::make('students/students')
 			->with('student', $user);
 	});
+	
+	Route::get('students/edit', function ()
+	{
+		$user = User::all();
+		return View::make('students/edit')
+			->with('student', $user);
+	});
 
 	// ------------------------| Form Section |------------------------\\
 
