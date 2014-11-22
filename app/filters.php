@@ -45,7 +45,7 @@ Route::filter('auth', function()
 		{
 			return Redirect::guest('login');
 		}
-	}
+	} 
 });
 
 
@@ -87,4 +87,13 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+});
+
+Route::filter('admin', function()
+{
+		if(!Auth::user()->isAdmin()) 
+		{
+			return Redirect::to('/home')
+				->with('error', 'You are not authorised to view the requested page.');
+		}
 });

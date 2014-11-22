@@ -55,19 +55,23 @@
 					<ul class="nav nav-pills">
 						<li class="active"><a href="{{URL::to('home')}}"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="{{URL::to('projects')}}">Projects</a></li>
-						<li><a href="{{URL::to('app_form')}}">Forms</a></li>
-
 		    			@if(Auth::check())   			
 		    				@if((Auth::user()->isAdmin()))
 			    				<li><a href="{{URL::to('admin_index')}}">Admin View</a></li>
 			    			@else
-			    				<li><a href="#">Your Team</a></li>
+			    				<li><a href="{{URL::to('students/'.Auth::user()->id)}}">My Profile</a></li>
+			    				<li><a href="{{URL::to('app_form')}}">Forms</a></li>
+			    				<li><a href="{{URL::to('my_team')}}">Your Team</a></li>
 			    			@endif
-		    				<li class="pull-right"><a class="btn btn-info" href="{{URL::to('logout?_token='.csrf_token())}}">Log Out</a></li>
+		    				<li class="pull-right"><a class="btn btn-info" href="{{ URL::to('logout?_token='.csrf_token()) }}">Log Out</a></li>
 		    				<li class="pull-right" style='padding-right: 5px;'>
-		    					Hello <strong>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}</li>			
+		    					Hello <strong><u>{{Auth::user() -> firstName}} {{Auth::user() -> lastName}}</u></strong>
+		    				</li>			
 		    			@else
 		    				<li class="pull-right"><a class="btn btn-info" href="{{URL::to('login')}}">Log In</a></li>
+		    				<li class="pull-right" style='padding-right: 5px;'>
+		    					Log In to see more!
+		    				</li>
 		    			@endif
 		  			</ul>
 				</div>

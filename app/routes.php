@@ -11,36 +11,43 @@
 |
 */
 
-//------------------------| Model Section |------------------------\\
+//---------------------------------------| Model Section |---------------------------------------\\
 
 Route::model('user', 'User');
 Route::model('project', 'Project');
 Route::model('preference', 'Preference');
 
-//------------------------| Logged In Section |------------------------\\
+//---------------------------------------| Logged In Section |---------------------------------------\\
 
 Route::group(array('before'=>'auth'), function() {
 
-	//-----------------------| Home (Student) page Section |---------------------\\
+	//------------------------| Home (Student) page Section |------------------------\\
 	Route::get('/', function() 
 	{
-		return Redirect::to('students');
+		return Redirect::to('home');
 	});
 
 	Route::get('home', function() 
 	{
 		$projects = Project::all();
 		$users = User::all();
-		return View::make('students/index')
+		return View::make('index')
 			->with('projects', $projects)
 			->with('users', $users);
 	});
 
-	Route::get('students', function ()
+	Route::get('students/students', function ()
 	{
 		$user = User::all();
 		return View::make('students/students')
 			->with('student', $user);
+	});
+
+	Route::get('students/{id}', function($id)
+	{
+	$user = User::find($id);
+	return View::make('students.single')
+		->with('user', $user);
 	});
 	
 	Route::get('students/edit', function ()
@@ -50,22 +57,25 @@ Route::group(array('before'=>'auth'), function() {
 			->with('student', $user);
 	});
 
+
 	//------------------------| Form Section |------------------------\\
 
-	Route::get('app_form', function()
+	Route::get('app_form/', function()
 	{
 		$projects = Project::all();
-		$users = User::all();
-		$preferences = Preference::all();
+		$id = Auth::user()->id;
+		$user = User::find($id);
+		$preference = Preference::find($user->preference_id);
 		return View::make('forms/app_form')
 			->with('projects', $projects)
-			->with('users', $users)
-			->with('preferences', $preferences);
+			->with('user', $user)
+			->with('preference', $preference)
+			->with('method', 'post');
 	});
 
-	//----------------------| Administration Section |----------------------\\
+	//------------------------| Administration Section |------------------------\\
 
-	Route::get('admin_index', function()
+	Route::get('admin_index', array('before'=>'admin', function()
 	{
 		$projects = Project::all();
 		$users = User::all();
@@ -74,8 +84,32 @@ Route::group(array('before'=>'auth'), function() {
 			->with('projects', $projects)
 			->with('users', $users)
 			->with('preferences', $preferences);
-	});
+	}));
 
+	//------------------------| Team Section |------------------------\\
+
+	Route::get('my_team', function()
+	{
+		return View::make('teams/team');
+	});
+});
+
+//---------------------------------------| Guest Section |---------------------------------------\\
+
+//------------------------| Home Section |------------------------\\
+
+Route::get('/', function() 
+{
+	return Redirect::to('home');
+});
+
+Route::get('home', function() 
+{
+	$projects = Project::all();
+	$users = User::all();
+	return View::make('index')
+		->with('projects', $projects)
+		->with('users', $users);
 });
 
 //------------------------| Project Section |------------------------\\
@@ -95,6 +129,7 @@ Route::get('projects/{id}', function($id)
 });
 
 //------------------------| login Section |------------------------\\
+
 
 
 Route::get('login', array('before'=>'guest', function() {

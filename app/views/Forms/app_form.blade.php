@@ -9,13 +9,13 @@
 @section('content')
 
 <div class="container">
-	{{Form::open()}}
+	{{Form::model($preference, array('method'=> '$method', 'url' => 'students/'.$user->id)) }}
 		<div class="form-group">
-			{{Form::label('Major')}} 
-			{{Form::text('major')}}
+			{{ Form::label('Major:') }} 
+			{{ Form::text('major', 'your major?', array('class' => 'form-control', 'id' =>'focusedInput')) }}
 
-			{{Form::label(' Minor/Asi')}} 
-			{{Form::text('minor')}}
+			{{ Form::label('Minor/Asi:')}} 
+			{{ Form::text('minor', 'your minor?', array('class' => 'form-control', 'id' =>'focusedInput')) }}
 		</div>
 
 		<div class="form-group">

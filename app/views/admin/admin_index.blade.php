@@ -20,32 +20,36 @@
 	<br>
 	<a href="#" class='btn btn-success' style='width:25%;'>Generate Teams</a>
 </div>
-<h3> Students: </h3>
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>Student ID</th>
-			<th>Name</th>
-			<th>Email Address</th>
-			<th>Admin Rights</th>
-		</tr>
-	</thead>
-	<tbody>
-	@foreach($users as $user)
-		<tr>
-			<td>{{$user->id}}</td>
-			<td><strong><a href="#">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
-			<td>{{$user->email}}</td>
-			@if ($user->is_admin == 1)
-				<td>Yes</td>
-			@else
-				<td>No</td>
-			@endif
-		</tr>
-	@endforeach
-	</tbody>
-</table>
 
+<div class="group col-md-7">
+	<h3> Students: </h3>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>Name</th>
+				<th>Email Address</th>
+				<th>Admin Rights</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach($users as $user)
+			<tr>
+				<td>{{$user->id}}</td>
+				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
+				<td>{{$user->email}}</td>
+				@if ($user->is_admin == 1)
+					<td>Yes</td>
+				@else
+					<td>No</td>
+				@endif
+			</tr>
+		@endforeach
+		</tbody>
+	</table>
+</div>
+<br>
+<div class="group col-md-12">
 <h3> Projects: </h3>
 <table class="table table-striped table-bordered">
 	<thead>
@@ -69,5 +73,5 @@
 	@endforeach
 	</tbody>
 </table>
-
+</div>
 @stop
