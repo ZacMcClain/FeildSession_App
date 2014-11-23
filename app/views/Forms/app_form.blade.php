@@ -2,7 +2,7 @@
 
 @section('header')
 <h2>
-	Project Selection form:
+	Edit Your Preferences
 </h2>
 @stop
 
