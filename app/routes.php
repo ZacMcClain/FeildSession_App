@@ -16,6 +16,8 @@
 Route::model('user', 'User');
 Route::model('project', 'Project');
 Route::model('preference', 'Preference');
+Route::model('teammate', 'Teammate');
+Route::model('team', 'Team');
 
 //---------------------------------------| Logged In Section |---------------------------------------\\
 
@@ -80,7 +82,7 @@ Route::group(array('before'=>'auth'), function() {
 	Route::get('students/{id}/set_teammates', function($id) {
 		$teammate = new Teammate;
 		$user_list = User::lists('firstName', 'lastName', 'id');
-		return View::make('students/set_projects')
+		return View::make('students/set_teammates')
 			->with('teammate', $teammate)
 			->with('method', 'post')
 			->with('user_list', $user_list);
@@ -88,6 +90,12 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::post('students/{id}', function() {
 		$pref = Preference::create(Input::all());
+		return Redirect::to('students/'.Auth::user()->id)
+			->with('message', 'Successfully set your preferences!');
+	});
+
+		Route::post('students', function() {
+		$pref = Teammate::create(Input::all());
 		return Redirect::to('students/'.Auth::user()->id)
 			->with('message', 'Successfully set your preferences!');
 	});
