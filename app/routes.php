@@ -50,11 +50,12 @@ Route::group(array('before'=>'auth'), function() {
 		->with('user', $user);
 	});
 	
-	Route::get('students/edit', function ()
+	Route::get('students/{id}/edit', function ($id)
 	{
-		$user = User::all();
+		$user = User::find($id);
 		return View::make('students/edit')
 			->with('student', $user);
+		
 	});
 
 
