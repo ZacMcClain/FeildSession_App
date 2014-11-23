@@ -2,7 +2,7 @@
 
 @section('header')
 
-	<h2>Application Administration:</h2>
+	<h2>Admin View</h2>
 
 
 @stop
@@ -10,12 +10,12 @@
 @section('content')
 
 <div class="jumbotron">
-	<h3>Team Genorating Algorithm:</h3>
+	<h3>Team Generating Algorithm:</h3>
 	<br>
 	<p>
-		The fallowing button will activate this applications team maker, and
-		will take you to a display of the newly generated teams. As You are this
-		sites admin user you will be allowed to edit, delete or save the results of
+		The following button will activate the team generation algorithm and
+		will take you to a page with the newly generated teams. As this
+		sites admin user, you are allowed to edit the results of
 		these automatic team selections.
 	</p>
 	<br>
