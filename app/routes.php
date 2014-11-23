@@ -81,7 +81,7 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('students/{id}/set_teammates', function($id) {
 		$teammate = new Teammate;
-		$user_list = User::lists('firstName', 'lastName', 'id');
+		$user_list = User::lists('firstName', 'id');
 		return View::make('students/set_teammates')
 			->with('teammate', $teammate)
 			->with('method', 'post')
@@ -107,10 +107,12 @@ Route::group(array('before'=>'auth'), function() {
 		$projects = Project::all();
 		$users = User::all();
 		$preferences = Preference::all();
+		$teammates = Teammate::all();
 		return View::make('admin/admin_index')
 			->with('projects', $projects)
 			->with('users', $users)
-			->with('preferences', $preferences);
+			->with('preferences', $preferences)
+			->with('teammates', $teammates);
 	}));
 
 	//------------------------| Team Section |------------------------\\
