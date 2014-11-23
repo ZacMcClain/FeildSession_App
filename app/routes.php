@@ -121,7 +121,7 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('all_teams', array('before'=>'admin', function() // admin only
 	{
-		return View::make('teams/teams');
+		return View::make('teams/AllTeams');
 	}));
 });
 
