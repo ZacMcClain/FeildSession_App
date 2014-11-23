@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('header')
-	<h2>CSCI Field Session Projects</h2>
+	<h2>2015 Field Session Projects</h2>
 @stop
 
 @section('content')

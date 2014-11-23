@@ -4,7 +4,6 @@
 
 	<h2>Application Administration:</h2>
 
-
 @stop
 
 @section('content')
@@ -21,8 +20,47 @@
 	<br>
 	<a href="#" class='btn btn-success' style='width:25%;'>Generate Teams</a>
 </div>
-
-<div class="group col-md-5">
+<div class="group col-md-8">
+	<h3>Preferences:</h3>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>First Choice<small> (Project ID)</small></th>
+				<th>Second Choice<small> (Project ID)</small></th>
+				<th>Third Choice<small> (Project ID)</small></th>
+				<th>Fourth Choice<small> (Project ID)</small></th>
+				<th>Importance</th>
+				<th>Experience</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach($preferences as $preference)
+			<tr>
+				{{--
+				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$preference->user->firstName}} {{$preference->user->lastName}}</a></strong></td>
+				--}}
+				<td>{{ $preference->firstChoice }}</td>
+				
+				<td>{{ $preference->secondChoice }}</td>
+				<td>{{ $preference->thirdChoice }}</td>
+				@if ($preference->fourthChoice != NULL)
+					<td>{{ $preference->fourthChoice }}</td>
+				@else
+					<td>NA</td>
+				@endif
+				<td>{{ $preference->mostImportant }}</td>
+				@if ($preference->experience != NULL)
+					<td><a href="#">exp history</a></td>
+				@else
+					<td>NA</td>
+				@endif
+			</tr>
+		@endforeach
+		</tbody>
+	</table>
+</div>
+<div class="group col-md-8">
 	<h3> Students: </h3>
 	<table class="table table-striped table-bordered">
 		<thead>
@@ -50,50 +88,7 @@
 	</table>
 </div>
 
-<div class="group col-md-7">
-	<h3>Preferences:</h3>
-	
-	<table class="table table-striped table-bordered">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>First Choice<small> (Project ID)</small></th>
-				<th>Second Choice<small> (Project ID)</small></th>
-				<th>Third Choice<small> (Project ID)</small></th>
-				<th>Fourth Choice<small> (Project ID)</small></th>
-				<th>Importance</th>
-				<th>Experience</th>
-			</tr>
-		</thead>
-		<tbody>
-		
-		@foreach($preferences as $preference)
-			<tr>
-				{{--
-				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$preference->user->firstName}} {{$preference->user->lastName}}</a></strong></td>
-				--}}
-				<td>{{ $preference->firstChoice }}</td>
-				
-				<td>{{ $preference->secondChoice }}</td>
-				<td>{{ $preference->thirdChoice }}</td>
-				@if ($preference->fourthChoice != NULL)
-					<td>{{ $preference->fourthChoice }}</td>
-				@else
-					<td>NA</td>
-				@endif
-				<td>{{ $preference->mostImportant }}</td>
-				@if ($preference->experience != NULL)
-					<td><a href="#">exp history</a></td>
-				@else
-					<td>NA</td>
-				@endif
-			</tr>
-		@endforeach
 
-		</tbody>
-	</table>
-
-</div>
 
 <br>
 
