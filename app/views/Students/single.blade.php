@@ -17,16 +17,19 @@
 		<span class="glyphicon glyphicon-edit"></span>Add Teammate Preference
 	</a>
 </div>
-
 @stop
 
 
 @section('content')
 <br>
+<div class="form-group">
 Major: {{$preference['major']}}
 <br>
 Minor: {{$preference['minor']}}
 <br>
+</div>
+<div class="container-fluid" id="push"></div>
+<div class="form-group">
 First Preference: {{$preference['firstChoice']}}
 <br>
 Second Preference: {{$preference['secondChoice']}}
@@ -35,9 +38,22 @@ Third Preference: {{$preference['thirdChoice']}}
 <br>
 Fourth Preference (Optional): {{$preference['fourthChoice']}}
 <br>
+</div>
+<div class="container-fluid" id="push"></div>
+<div class="form-group">
 Team or Project Preference: {{$preference['mostImportant']}}
 <br>
 Helpful Info: {{$preference['experience']}}
 <br>
+<<<<<<< HEAD
+</div>
+<div class="container-fluid" id="push"></div>
+Preferred Teammates:
+<br>
+Undesirable Teammates:
+<br>
+
+=======
+>>>>>>> ae00ce8ac898366ec1f2b0f0af7fe33f574d92df
 
 @stop
