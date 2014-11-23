@@ -7,34 +7,36 @@
 
 
 @section('content')
-
-Major: {{$preference}}
 <br>
-Minor:
+Major: {{$preference['major']}}
 <br>
-First Preference:
+Minor: {{$preference['minor']}}
 <br>
-Second Preference:
+First Preference: {{$preference['firstChoice']}}
 <br>
-Third Preference:
+Second Preference: {{$preference['secondChoice']}}
 <br>
-Fourth Preference (Optional):
+Third Preference: {{$preference['thirdChoice']}}
 <br>
-Team or Project Preference:
+Fourth Preference (Optional): {{$preference['fourthChoice']}}
 <br>
-Helpful Info:
+Team or Project Preference: {{$preference['mostImportant']}}
+<br>
+Helpful Info: {{$preference['experience']}}
 <br>
 Preferred Teammates:
 <br>
 Undesirable Teammates:
 <br>
 <div class="container">
+	@if(empty($preference))
 	<a href="{{URL::to('students/'.Auth::user()->id.'/set')}}">
 		<span class="glyphicon glyphicon-edit"></span>Set Preferences
 	</a>
-	<br>
+	@else
 	<a href="{{URL::to('students/'.Auth::user()->id.'/edit')}}">
 		<span class="glyphicon glyphicon-edit"></span>Edit
 	</a>
+	@endif
 </div>
 @stop
