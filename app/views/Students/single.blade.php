@@ -30,13 +30,16 @@ Undesirable Teammates:
 <br>
 <div class="container">
 	@if(empty($preference))
-	<a href="{{URL::to('students/'.Auth::user()->id.'/set')}}">
-		<span class="glyphicon glyphicon-edit"></span>Set Preferences
+	<a href="{{URL::to('students/'.Auth::user()->id.'/set_projects')}}">
+		<span class="glyphicon glyphicon-edit"></span>Set Project Preferences
 	</a>
 	@else
 	<a href="{{URL::to('students/'.Auth::user()->id.'/edit')}}">
-		<span class="glyphicon glyphicon-edit"></span>Edit
+		<span class="glyphicon glyphicon-edit"></span>Edit Project Preferences
 	</a>
 	@endif
+
+	<a href="{{URL::to('students/'.Auth::user()->id.'/set_teammates')}}">
+		<span class="glyphicon glyphicon-edit"></span>Add Teammate Preference
 </div>
 @stop
