@@ -52,6 +52,7 @@
 
 <div class="group col-md-7">
 	<h3>Preferences:</h3>
+	
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -65,10 +66,14 @@
 			</tr>
 		</thead>
 		<tbody>
+		
 		@foreach($preferences as $preference)
 			<tr>
+				{{--
 				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$preference->user->firstName}} {{$preference->user->lastName}}</a></strong></td>
+				--}}
 				<td>{{ $preference->firstChoice }}</td>
+				
 				<td>{{ $preference->secondChoice }}</td>
 				<td>{{ $preference->thirdChoice }}</td>
 				@if ($preference->fourthChoice != NULL)
@@ -84,8 +89,10 @@
 				@endif
 			</tr>
 		@endforeach
+
 		</tbody>
 	</table>
+
 </div>
 
 <br>

@@ -63,14 +63,29 @@ Route::group(array('before'=>'auth'), function() {
 	Route::get('app_form/', function()
 	{
 		$projects = Project::all();
+		$projects_list = Project::lists('title', 'id');
 		$id = Auth::user()->id;
 		$user = User::find($id);
 		$preference = Preference::find($user->preference_id);
 		return View::make('forms/app_form')
 			->with('projects', $projects)
+			->with('projects_list', $projects_list)
 			->with('user', $user)
 			->with('preference', $preference)
 			->with('method', 'post');
+	});
+
+	Route::post('teams_form', function()
+	{
+		$preference = Preference::create(Input::all());
+		return Redirect::to('teams_form')
+			->with('message', 'Your Project Preferences have been saved.');
+
+	});
+
+	Route::get('teams_form', function()
+	{
+		return View::make('forms/teams_form');
 	});
 
 	//------------------------| Administration Section |------------------------\\
