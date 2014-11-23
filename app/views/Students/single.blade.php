@@ -45,15 +45,5 @@ Team or Project Preference: {{$preference['mostImportant']}}
 <br>
 Helpful Info: {{$preference['experience']}}
 <br>
-<<<<<<< HEAD
-</div>
-<div class="container-fluid" id="push"></div>
-Preferred Teammates:
-<br>
-Undesirable Teammates:
-<br>
-
-=======
->>>>>>> ae00ce8ac898366ec1f2b0f0af7fe33f574d92df
 
 @stop
