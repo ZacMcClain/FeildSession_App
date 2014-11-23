@@ -14,7 +14,7 @@
 			}
 			#masthead{
 				display:block;
-				background: #FA812A url('img/m-banner.jpg') no-repeat;
+				background: #FCAA6F url('img/m-banner.jpg') no-repeat;
 			}
 			#mines_logo{
 				display: block;
@@ -58,6 +58,7 @@
 		    			@if(Auth::check())   			
 		    				@if((Auth::user()->isAdmin()))
 			    				<li><a href="{{URL::to('admin_index')}}">Admin View</a></li>
+			    				<li><a href="{{URL::to('all_teams')}}">All Teams</a></li>
 			    			@else
 			    				<li><a href="{{URL::to('students/'.Auth::user()->id)}}">My Profile</a></li>
 			    				<li><a href="{{URL::to('app_form')}}">Forms</a></li>

@@ -16,7 +16,9 @@ class AddUserPreferencesTable extends Migration {
 		Schema::create('preferences', function($table) 
 		{
 			$table->increments('id');
-			// The selected project_id will be stored here
+			$table->string('major')->nullable();
+			$table->string('minor')->nullable();
+			// The selected project_id or the projects will be stored here
 			$table->integer('firstChoice'); 
 			$table->integer('secondChoice');
 			$table->integer('thirdChoice');

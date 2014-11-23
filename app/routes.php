@@ -75,7 +75,7 @@ Route::group(array('before'=>'auth'), function() {
 
 	//------------------------| Administration Section |------------------------\\
 
-	Route::get('admin_index', array('before'=>'admin', function()
+	Route::get('admin_index', array('before'=>'admin', function() // admin only
 	{
 		$projects = Project::all();
 		$users = User::all();
@@ -92,6 +92,11 @@ Route::group(array('before'=>'auth'), function() {
 	{
 		return View::make('teams/team');
 	});
+
+	Route::get('all_teams', array('before'=>'admin', function() // admin only
+	{
+		return View::make('teams/teams');
+	}));
 });
 
 //---------------------------------------| Guest Section |---------------------------------------\\

@@ -10,6 +10,8 @@ class PreferencesTableSeeder extends Seeder
 			array(
 				array(
 					'id'=>1,
+					'major'=>NULL,
+					'minor'=>NULL,
 					'firstChoice'=> -1,
 					'secondChoice'=> -1,
 					'thirdChoice'=> -1,

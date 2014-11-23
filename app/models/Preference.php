@@ -4,6 +4,8 @@ class Preference extends Eloquent
 {
 	public $timestamps = false;
 	protected $fillable = array(
+								'major',
+								'minor',
 								'firstChoice',
 								'secondChoice',
 								'thirdChoice',
