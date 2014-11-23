@@ -6,6 +6,27 @@
 @stop
 
 @section('content')
+
+Major: {{$preference}}
+<br>
+Minor:
+<br>
+First Preference:
+<br>
+Second Preference:
+<br>
+Third Preference:
+<br>
+Fourth Preference (Optional):
+<br>
+Team or Project Preference:
+<br>
+Helpful Info:
+<br>
+Preferred Teammates:
+<br>
+Undesirable Teammates:
+<br>
 <div class="container">
 <br>
 	<strong> First Name: </strong> {{Auth::user() -> firstName}}

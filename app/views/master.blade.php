@@ -61,7 +61,6 @@
 			    				<li><a href="{{URL::to('all_teams')}}">All Teams</a></li>
 			    			@else
 			    				<li><a href="{{URL::to('students/'.Auth::user()->id)}}">My Profile</a></li>
-			    				<li><a href="{{URL::to('app_form')}}">Forms</a></li>
 			    				<li><a href="{{URL::to('my_team')}}">Your Team</a></li>
 			    			@endif
 		    				<li class="pull-right"><a class="btn btn-info" href="{{ URL::to('logout?_token='.csrf_token()) }}">Log Out</a></li>
