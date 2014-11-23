@@ -16,7 +16,7 @@ Currently Logged in as:
 </div>
 <br>
 <div class="container">
-	<a href="{{URL::to('students/edit')}}">
+	<a href="{{URL::to('students/'.Auth::edit')}}">
 		<span class="glyphicon glyphicon-edit"></span>Edit
 	</a>
 </div>
