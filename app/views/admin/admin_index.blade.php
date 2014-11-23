@@ -69,9 +69,7 @@
 		
 		@foreach($preferences as $preference)
 			<tr>
-				{{--
-				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$preference->user->firstName}} {{$preference->user->lastName}}</a></strong></td>
-				--}}
+				<td>{{ $preference->user['firstName'] }} {{ $preference->user['lastName'] }}</td>
 				<td>{{ $preference->firstChoice }}</td>
 				
 				<td>{{ $preference->secondChoice }}</td>
@@ -83,7 +81,7 @@
 				@endif
 				<td>{{ $preference->mostImportant }}</td>
 				@if ($preference->experience != NULL)
-					<td><a href="#">exp history</a></td>
+					<td>{{ $preference->experience }}</td>
 				@else
 					<td>NA</td>
 				@endif

@@ -66,6 +66,21 @@ Route::group(array('before'=>'auth'), function() {
 		
 	});
 
+	Route::get('students/{id}/set', function($id) {
+		$pref = new Preference;
+		$projects_list = Project::lists('title', 'id');
+		return View::make('students/set')
+			->with('pref', $pref)
+			->with('method', 'post')
+			->with('projects_list', $projects_list);
+	});
+
+	Route::post('students/{id}', function() {
+		$pref = Preference::create(Input::all());
+		return Redirect::to('students/'.Auth::user()->id)
+			->with('message', 'Successfully set your preferences!');
+	});
+
 
 	//------------------------| Form Section |------------------------\\
 

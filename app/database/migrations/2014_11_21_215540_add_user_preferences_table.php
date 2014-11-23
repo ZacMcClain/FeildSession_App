@@ -28,7 +28,7 @@ class AddUserPreferencesTable extends Migration {
 			//Users experance will be stored in this column 
 			$table->string('experience')->nullable();
 			//This column creates a connection (foreign key) between users and there preferances
-			$table->integer('user_id')->nullable()->references('id')->on('users'); 
+			$table->integer('user_id'); 
 
 		});
 	}

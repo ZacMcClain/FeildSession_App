@@ -2,11 +2,11 @@
 
 @section('header')
 
-<h2> 
-<a href="{{URL::to('students/'.Auth::user()->id)}}"> &larr;Cancel</a>
-</h2>
+<h2> Editing your preferences </h2>
 @stop
 
 @section('content')
+
+{{ Form::}}
 
 @stop
