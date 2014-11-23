@@ -46,7 +46,7 @@ Route::group(array('before'=>'auth'), function() {
 	Route::get('students/{id}', function($id)
 	{
 	$user = User::find($id);
-	$preference = Preference::find($user->preference_id);
+	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();;
 	return View::make('students.single')
 		->with('user', $user)
 		->with('preference', $preference);
