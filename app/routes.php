@@ -16,6 +16,8 @@
 Route::model('user', 'User');
 Route::model('project', 'Project');
 Route::model('preference', 'Preference');
+Route::model('teammate', 'Teammate');
+Route::model('team', 'Team');
 
 //---------------------------------------| Logged In Section |---------------------------------------\\
 
@@ -59,7 +61,7 @@ Route::group(array('before'=>'auth'), function() {
 		$id = Auth::user()->id;
 		$user = User::find($id);
 		$preference = Preference::find($user->preference_id);
-		return View::make('forms/app_form')
+		return View::make('students/set_projects')
 			->with('projects', $projects)
 			->with('projects_list', $projects_list)
 			->with('user', $user)
@@ -68,13 +70,22 @@ Route::group(array('before'=>'auth'), function() {
 		
 	});
 
-	Route::get('students/{id}/set', function($id) {
+	Route::get('students/{id}/set_projects', function($id) {
 		$pref = new Preference;
 		$projects_list = Project::lists('title', 'id');
-		return View::make('students/set')
+		return View::make('students/set_projects')
 			->with('pref', $pref)
 			->with('method', 'post')
 			->with('projects_list', $projects_list);
+	});
+
+	Route::get('students/{id}/set_teammates', function($id) {
+		$teammate = new Teammate;
+		$user_list = User::lists('firstName', 'lastName', 'id');
+		return View::make('students/set_teammates')
+			->with('teammate', $teammate)
+			->with('method', 'post')
+			->with('user_list', $user_list);
 	});
 
 	Route::post('students/{id}', function() {
@@ -83,20 +94,10 @@ Route::group(array('before'=>'auth'), function() {
 			->with('message', 'Successfully set your preferences!');
 	});
 
-
-	//------------------------| Form Section |------------------------\\
-
-	Route::post('teams_form', function()
-	{
-		$preference = Preference::create(Input::all());
-		return Redirect::to('teams_form')
-			->with('message', 'Your Project Preferences have been saved.');
-
-	});
-
-	Route::get('teams_form', function()
-	{
-		return View::make('forms/teams_form');
+		Route::post('students', function() {
+		$pref = Teammate::create(Input::all());
+		return Redirect::to('students/'.Auth::user()->id)
+			->with('message', 'Successfully set your preferences!');
 	});
 
 	//------------------------| Administration Section |------------------------\\
@@ -121,11 +122,9 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('all_teams', array('before'=>'admin', function() // admin only
 	{
-		return View::make('teams/teams');
+		return View::make('teams/AllTeams');
 	}));
 });
-
-//---------------------------------------| Guest Section |---------------------------------------\\
 
 //------------------------| Home Section |------------------------\\
 
