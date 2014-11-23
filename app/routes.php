@@ -52,18 +52,7 @@ Route::group(array('before'=>'auth'), function() {
 	
 	Route::get('students/{id}/edit', function ($id)
 	{
-		$user = User::find($id);
-		return View::make('students/edit')
-			->with('student', $user);
-		
-	});
-
-
-	//------------------------| Form Section |------------------------\\
-
-	Route::get('app_form/', function()
-	{
-		$projects = Project::all();
+	$projects = Project::all();
 		$projects_list = Project::lists('title', 'id');
 		$id = Auth::user()->id;
 		$user = User::find($id);
@@ -74,7 +63,12 @@ Route::group(array('before'=>'auth'), function() {
 			->with('user', $user)
 			->with('preference', $preference)
 			->with('method', 'post');
+		
 	});
+
+
+	//------------------------| Form Section |------------------------\\
+
 
 	Route::post('teams_form', function()
 	{
