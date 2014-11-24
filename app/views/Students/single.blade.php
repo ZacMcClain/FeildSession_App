@@ -28,13 +28,10 @@ Preferred Teammates:
 Undesirable Teammates:
 <br>
 <div class="container">
-<br>
-	<strong> First Name: </strong> {{Auth::user() -> firstName}}
+	<a href="{{URL::to('students/'.Auth::user()->id.'/set')}}">
+		<span class="glyphicon glyphicon-edit"></span>Set Preferences
+	</a>
 	<br>
-	<strong> Last Name: </strong> {{Auth::user() -> lastName}}
-	<br>
-	<strong> Email: </strong> {{Auth::user() -> email}}
-<br>
 	<a href="{{URL::to('students/'.Auth::user()->id.'/edit')}}">
 		<span class="glyphicon glyphicon-edit"></span>Edit
 	</a>
