@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTeammatesAndTeamsTables extends Migration {
+class AddTeamAndTeammatesTables extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -27,11 +27,11 @@ class AddTeammatesAndTeamsTables extends Migration {
 			$table->increments('id');
 			$table->integer('project_id');
 			$table->integer('person1_id');
-			$table->integer('person2_id');
-			$table->integer('person3_id');
-			$table->integer('person4_id');
-			$table->integer('person5_id');
-			$table->integer('person6_id');
+			$table->integer('person2_id')->nullable;
+			$table->integer('person3_id')->nullable;
+			$table->integer('person4_id')->nullable;
+			$table->integer('person5_id')->nullable;
+			$table->integer('person6_id')->nullable;
 		});
 	}
 

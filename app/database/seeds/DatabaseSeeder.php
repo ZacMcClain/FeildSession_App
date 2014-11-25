@@ -10,9 +10,10 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
-		//$this->call('PreferencesTableSeeder');
 		$this->call('UserTableSeeder');
 		$this->call('ProjectTableSeeder');
+		DB::table('preferences')->delete();
+		DB::table('teammates')->delete();
 	}
 
 }
