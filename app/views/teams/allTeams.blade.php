@@ -9,21 +9,32 @@
 @section('content')
 	<?php
 		if($generateTeams == 1){
+			DB::table('team')->delete();
+
+			foreach($student_pool as $s) {
+				echo $s;
+			}
+
 			foreach($projects as $project) {
 				$members = array_fill(0, 6, -1);
 				$count = 0;
 				foreach($preferences as $pref) {
-					if($pref->firstChoice == $project->id && $count < $project->max) {
-						$members[$count] = $pref->user['id'];
-						$count++;
-					}
-					else if($pref->secondChoice == $project->id && $count < $project->max) {
-						$members[$count] = $pref->user['id'];
-						$count++;
-					}
-					else if($pref->thirdChoice == $project->id && $count < $project->max) {
-						$members[$count] = $pref->user['id'];
-						$count++;
+					if(in_array($pref->user['id'], $student_pool)) {
+						if($pref->firstChoice == $project->id && $count < $project->max) {
+							$members[$count] = $pref->user['id'];
+							$count++;
+							unset($student_pool[$pref->user['id']-1]);
+						}
+						else if($pref->secondChoice == $project->id && $count < $project->max) {
+							$members[$count] = $pref->user['id'];
+							$count++;
+							unset($student_pool[$pref->user['id']-1]);
+						}
+						else if($pref->thirdChoice == $project->id && $count < $project->max) {
+							$members[$count] = $pref->user['id'];
+							$count++;
+							unset($student_pool[$pref->user['id']-1]);
+						}
 					}
 				}
 

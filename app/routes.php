@@ -134,11 +134,13 @@ Route::group(array('before'=>'auth'), function() {
 		$users = User::all();
 		$preferences = Preference::all();
 		$teammates = Teammate::all();
+		$student_pool = User::lists('id');
 		return View::make('teams/AllTeams')
 			->with('projects', $projects)
 			->with('users', $users)
 			->with('preferences', $preferences)
 			->with('teammates', $teammates)
+			->with('student_pool', $student_pool)
 			->with('generateTeams', 1);
 	}));
 
