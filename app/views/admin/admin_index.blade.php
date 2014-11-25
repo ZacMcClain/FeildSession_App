@@ -18,7 +18,7 @@
 		these automatic team selections.
 	</p>
 	<br>
-	<a href="{{URL::to('all_teams')}}" class='btn btn-success' style='width:25%;'>Generate Teams</a>
+	<a href="{{ URL::route('generate_teams') }}" class='btn btn-success' style='width:25%;'>Generate Teams</a>
 </div>
 <div class="group col-md-8">
 	<h3>Preferences:</h3>

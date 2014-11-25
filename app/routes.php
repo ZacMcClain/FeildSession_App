@@ -124,8 +124,27 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('all_teams', array('before'=>'admin', function() // admin only
 	{
-		return View::make('teams/AllTeams');
+		return View::make('teams/AllTeams')
+			->with('generateTeams', 0);
 	}));
+
+	Route::get('generate_teams', array('as'=>'generate_teams', function() 
+	{
+		$projects = Project::all();
+		$users = User::all();
+		$preferences = Preference::all();
+		$teammates = Teammate::all();
+		$student_pool = User::lists('id');
+		return View::make('teams/AllTeams')
+			->with('projects', $projects)
+			->with('users', $users)
+			->with('preferences', $preferences)
+			->with('teammates', $teammates)
+			->with('student_pool', $student_pool)
+			->with('generateTeams', 1);
+	}));
+
+
 });
 
 //------------------------| Home Section |------------------------\\
