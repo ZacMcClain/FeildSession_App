@@ -87,6 +87,7 @@
 		</div>
 		<div class="container-fluid" id="push"></div>
 		<br>
+
 			<span class="glyphicon glyphicon-ok-sign"></span>
 			{{ Form::label('People I want to work with:') }}
 			<div class='input-group'>
@@ -114,6 +115,16 @@
 			</div>
 			<br>
 			{{Form::hidden('user_id', Auth::user()->id)}}
+
+		<div class='form-group col-lg-12'>
+			<p>
+				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				Denotes a required feild
+			</p>
+		</div>
+
+		{{Form::hidden('user_id', Auth::user()->id)}}
+
 
 		{{Form::submit("Save Preferences", array("class"=>"btn btn-default"))}}
 

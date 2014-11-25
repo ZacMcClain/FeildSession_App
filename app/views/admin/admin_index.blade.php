@@ -18,7 +18,7 @@
 		these automatic team selections.
 	</p>
 	<br>
-	<a href="#" class='btn btn-success' style='width:25%;'>Generate Teams</a>
+	<a href="{{URL::to('all_teams')}}" class='btn btn-success' style='width:25%;'>Generate Teams</a>
 </div>
 <div class="group col-md-8">
 	<h3>Preferences:</h3>
@@ -87,6 +87,34 @@
 </div>
 
 
+
+<br>
+
+<div class="group col-md-7">
+	<h3>Team Preferences:</h3>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Person 1</th>
+				<th>Person 2</th>
+				<th>Want to work together</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach($teammates as $teammate)
+			<tr>
+				<td>{{ $teammate->person1['firstName'] }} {{ $teammate->person1['lastName'] }}</td>
+				<td>{{ $teammate->person2['firstName'] }} {{ $teammate->person2['lastName'] }}</td>
+				@if ($teammate->want_to_work_with == 1)
+					<td>Yes</td>
+				@else
+					<td>No</td>
+				@endif
+			</tr>
+		@endforeach
+		</tbody>
+	</table>
+</div>
 
 <br>
 
