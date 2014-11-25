@@ -11,10 +11,6 @@
 		if($generateTeams == 1){
 			DB::table('team')->delete();
 
-			foreach($student_pool as $s) {
-				echo $s;
-			}
-
 			foreach($projects as $project) {
 				$members = array_fill(0, 6, -1);
 				$count = 0;
@@ -58,7 +54,7 @@
 		echo '<p> You haven\'t generated any teams yet. </p>';
 	} 
 	else {
-		echo'<div class="group col-md-5">
+		echo'<div class="group col-md-12">
 		<h3> Teams: </h3>
 		<table class="table table-striped table-bordered">
 			<thead>
@@ -74,8 +70,11 @@
 			</thead>
 			<tbody>';
 			foreach($teams as $team) {
+
+				$proj = DB::table('projects')->where('id', '=', $team->project_id)->first();
+				
 				echo '<tr>
-					<td>'.$team->project_id.'</td>
+					<td>'.$proj->title.'</td>
 					<td>'.$team->person1_id.'</td>
 					<td>'.$team->person2_id.'</td>
 					<td>'.$team->person3_id.'</td>
