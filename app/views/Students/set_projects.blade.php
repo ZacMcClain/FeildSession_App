@@ -7,7 +7,7 @@
 
 @section('content')
 
-{{ Form::model($pref, array('method' => $method, 'url' => 'students/'.Auth::user()->id)) }}
+{{ Form::model($preference, array('method' => $method, 'url' => 'students/'.Auth::user()->id)) }}
 
 		<div class="input-group">
 			<span class="glyphicon glyphicon-info-sign"></span>
