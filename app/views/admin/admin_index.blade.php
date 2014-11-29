@@ -12,14 +12,20 @@
 <div class="jumbotron">
 	<h3>Team Generating Algorithm:</h3>
 	<br>
-	<p>
+	<p> 
+	<small>
 		The following button will activate the team generation algorithm and
 		will take you to a page with the newly generated teams. As this
 		sites admin user, you are allowed to edit the results of
 		these automatic team selections.
+	</small>
 	</p>
 	<br>
 	<a href="{{ URL::route('generate_teams') }}" class='btn btn-success' style='width:25%;'>Generate Teams</a>
+	<br>
+	<h3>Manually Create/Edit Teams:</h3>
+	<br>
+	<a href="{{ URL::route('edit_teams') }}" class='btn btn-success' style='width:25%;'>Manually Create/Edit Teams</a>
 </div>
 
 <div class="group col-md-5">

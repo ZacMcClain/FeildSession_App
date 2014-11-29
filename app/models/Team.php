@@ -20,32 +20,32 @@ class Team extends Eloquent
 
 	public function person1()
 	{
-		return $this->belongsTo('User');
+		return $this->hasMany('User');
 	}
 
 	public function person2()
 	{
-		return $this->belongsTo('User');
+		return $this->hasMany('User');
 	}
 
 	public function person3()
 	{
-		return $this->belongsTo('User');
+		return $this->hasMany('User');
 	}
 
 	public function person4()
 	{
-		return $this->belongsTo('User');
+		return $this->hasMany('User');
 	}
 
 	public function person5()
 	{
-		return $this->belongsTo('User');
+		return $this->hasMany('User');
 	}
 
 	public function person6()
 	{
-		return $this->belongsTo('User');
+		return $this->hasMany('User');
 	}
 }
 

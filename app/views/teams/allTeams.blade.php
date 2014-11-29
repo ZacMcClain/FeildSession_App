@@ -72,6 +72,7 @@
 			foreach($teams as $team) {
 
 				$proj = DB::table('projects')->where('id', '=', $team->project_id)->first();
+
 				
 				echo '<tr>
 					<td>'.$proj->title.'</td>

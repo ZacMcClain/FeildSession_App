@@ -20,19 +20,6 @@ class AddTeamAndTeammatesTables extends Migration {
 			$table->integer('person2_id');
 			$table->boolean('want_to_work_with'); 
 		});
-
-		Schema::dropIfExists('team');
-		Schema::create('team', function($table) 
-		{
-			$table->increments('id');
-			$table->integer('project_id');
-			$table->integer('person1_id');
-			$table->integer('person2_id')->nullable;
-			$table->integer('person3_id')->nullable;
-			$table->integer('person4_id')->nullable;
-			$table->integer('person5_id')->nullable;
-			$table->integer('person6_id')->nullable;
-		});
 	}
 
 	/**
@@ -43,7 +30,6 @@ class AddTeamAndTeammatesTables extends Migration {
 	public function down()
 	{
 		Schema::dropIfExists('teammates');
-		Schema::dropIfExists('team');
 	}
 
 }

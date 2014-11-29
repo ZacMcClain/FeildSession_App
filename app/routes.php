@@ -144,6 +144,39 @@ Route::group(array('before'=>'auth'), function() {
 			->with('generateTeams', 1);
 	}));
 
+	Route::get('edit_teams', array('as'=>'edit_teams', function() 
+	{
+		$team = new Team;
+		$projects = Project::lists('title', 'id');
+		$preferences = Preference::all();
+		$teammates = Teammate::all();
+		$student_pool = User::lists('id');
+		$users = User::lists('firstName', 'id');
+		return View::make('teams/edit_teams')
+			->with('team', $team)
+			->with('projects', $projects)
+			->with('users', $users)
+			->with('preferences', $preferences)
+			->with('teammates', $teammates)
+			->with('student_pool', $student_pool)
+			->with('method', 'post');
+	}));
+
+	Route::post('all_teams', function() {
+		$project_id = Input::get('project_id');
+		DB::table('team')->where('project_id', $project_id)->delete();
+		DB::table('team')->insertGetId(
+						array('project_id' => $project_id, 
+						'person1_id' => Input::get('person1_id'), 
+						'person2_id' => Input::get('person2_id'), 
+						'person3_id' => Input::get('person3_id'), 
+						'person4_id' => Input::get('person4_id'), 
+						'person5_id' => Input::get('person5_id'),
+						'person6_id' => Input::get('person6_id')
+						));
+		return Redirect::to('all_teams')
+			->with('message', 'Successfully saved team!');
+	});
 
 });
 
