@@ -84,7 +84,7 @@
 		<div class='form-group col-lg-12'>
 			<p>
 				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
-				Denotes a required feild
+				Denotes a required field
 			</p>
 		</div>
 

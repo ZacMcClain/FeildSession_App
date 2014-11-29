@@ -71,10 +71,10 @@ Route::group(array('before'=>'auth'), function() {
 	});
 
 	Route::get('students/{id}/set_projects', function($id) {
-		$pref = new Preference;
+		$preference = new Preference;
 		$projects_list = Project::lists('title', 'id');
 		return View::make('students/set_projects')
-			->with('pref', $pref)
+			->with('preference', $preference)
 			->with('method', 'post')
 			->with('projects_list', $projects_list);
 	});
