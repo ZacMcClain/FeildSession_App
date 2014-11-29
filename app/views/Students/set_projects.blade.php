@@ -8,7 +8,7 @@
 @section('content')
 
 {{ Form::model($preference, array('method' => $method, 'url' => 'students/'.Auth::user()->id)) }}
-
+		
 		<div class="input-group">
 			<span class="glyphicon glyphicon-info-sign"></span>
 			{{ Form::label('Major, Minor/Asi:') }}

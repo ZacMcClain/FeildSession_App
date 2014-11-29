@@ -76,9 +76,16 @@ Route::group(array('before'=>'auth'), function() {
 });
 
 	Route::get('students/{id}/set_projects', function($id) {
+		$checkPref = Preference::where('user_id', '=', Auth::user()->id)->first();
+		
+		if($checkPref!=null) {
+			return Redirect::to('students/'.Auth::user()->id.'/edit');
+		}
+		
 		$preference = new Preference;
 		$projects_list = Project::lists('title', 'id');
 		return View::make('students/set_projects')
+			->with('check', $checkPref)
 			->with('preference', $preference)
 			->with('method', 'post')
 			->with('projects_list', $projects_list);
