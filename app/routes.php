@@ -48,7 +48,7 @@ Route::group(array('before'=>'auth'), function() {
 	Route::get('students/{id}', function($id)
 	{
 	$user = User::find($id);
-	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();;
+	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
 	return View::make('students.single')
 		->with('user', $user)
 		->with('preference', $preference);
@@ -56,25 +56,37 @@ Route::group(array('before'=>'auth'), function() {
 	
 	Route::get('students/{id}/edit', function ($id)
 	{
-		$projects = Project::all();
 		$projects_list = Project::lists('title', 'id');
 		$id = Auth::user()->id;
 		$user = User::find($id);
-		$preference = Preference::find($user->preference_id);
-		return View::make('students/set_projects')
-			->with('projects', $projects)
+		$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
+		return View::make('students/edit')
 			->with('projects_list', $projects_list)
 			->with('user', $user)
 			->with('preference', $preference)
-			->with('method', 'post');
+			->with('method', 'put');
 		
 	});
+	
+	Route::put('students/{id}', function($id) {
+		$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
+		$preference->update(Input::all());
+		return Redirect::to('students/'.Auth::user()->id)
+		->with('message', 'Successfully updated preferences!');
+});
 
 	Route::get('students/{id}/set_projects', function($id) {
-		$pref = new Preference;
+		$checkPref = Preference::where('user_id', '=', Auth::user()->id)->first();
+		
+		if($checkPref!=null) {
+			return Redirect::to('students/'.Auth::user()->id.'/edit');
+		}
+		
+		$preference = new Preference;
 		$projects_list = Project::lists('title', 'id');
 		return View::make('students/set_projects')
-			->with('pref', $pref)
+			->with('check', $checkPref)
+			->with('preference', $preference)
 			->with('method', 'post')
 			->with('projects_list', $projects_list);
 	});

@@ -7,8 +7,8 @@
 
 @section('content')
 
-{{ Form::model($pref, array('method' => $method, 'url' => 'students/'.Auth::user()->id)) }}
-
+{{ Form::model($preference, array('method' => $method, 'url' => 'students/'.Auth::user()->id)) }}
+		
 		<div class="input-group">
 			<span class="glyphicon glyphicon-info-sign"></span>
 			{{ Form::label('Major, Minor/Asi:') }}
@@ -84,7 +84,7 @@
 		<div class='form-group col-lg-12'>
 			<p>
 				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
-				Denotes a required feild
+				Denotes a required field
 			</p>
 		</div>
 
