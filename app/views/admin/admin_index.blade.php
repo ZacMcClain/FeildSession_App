@@ -43,7 +43,7 @@
 		@foreach($users as $user)
 			<tr>
 				<td>{{$user->id}}</td>
-				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
+				<td><strong><a href="{{URL::to('admin_student/'.$user->id)}}">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
 				<td>{{$user->email}}</td>
 				@if ($user->is_admin == 1)
 					<td>Yes</td>

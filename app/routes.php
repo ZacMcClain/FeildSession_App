@@ -126,6 +126,15 @@ Route::group(array('before'=>'auth'), function() {
 			->with('preferences', $preferences)
 			->with('teammates', $teammates);
 	}));
+	
+	Route::get('admin_student/{id}', array('before'=>'admin', function($id) // admin only
+	{
+	$user = User::find($id);
+	$preference = Preference::where('user_id', '=',$id)->first();
+	return View::make('admin/admin_student')
+		->with('user', $user)
+		->with('preference', $preference);
+	}));
 
 	//------------------------| Team Section |------------------------\\
 
