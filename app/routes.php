@@ -47,6 +47,9 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('students/{id}', function($id)
 	{
+		if($id != Auth::user()->id) {
+			return Redirect::to('students/'.Auth::user()->id);
+		}
 	$user = User::find($id);
 	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
 	return View::make('students.single')
