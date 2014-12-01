@@ -134,15 +134,51 @@
 
 				$proj = DB::table('projects')->where('id', '=', $team->project_id)->first();
 
+				if($team->person1_id != -1){
+					$teammate1 = $users->find($team->person1_id)['firstName'];
+				} else {
+					$teammate1 = "-------";
+				}
+
+				if($team->person2_id != -1){
+					$teammate2 = $users->find($team->person2_id)['firstName'];
+				} else {
+					$teammate2 = "-------";
+				}
+
+				if($team->person3_id != -1){
+					$teammate3 = $users->find($team->person3_id)['firstName'];
+				} else {
+					$teammate3 = "-------";
+				}
+
+				if($team->person4_id != -1){
+					$teammate4 = $users->find($team->person4_id)['firstName'];
+				} else {
+					$teammate4 = "-------";
+				}
+
+				if($team->person5_id != -1){
+					$teammate5 = $users->find($team->person5_id)['firstName'];
+				} else {
+					$teammate5 = "-------";
+				}
+
+				if($team->person6_id != -1){
+					$teammate6 = $users->find($team->person6_id)['firstName'];
+				} else {
+					$teammate6 = "-------";
+				}
+
 				
 				echo '<tr>
-					<td>'.$proj->title.'</td>
-					<td>'.$team->person1_id.'</td>
-					<td>'.$team->person2_id.'</td>
-					<td>'.$team->person3_id.'</td>
-					<td>'.$team->person4_id.'</td>
-					<td>'.$team->person5_id.'</td>
-					<td>'.$team->person6_id.'</td>
+					<td>' . $proj->title . '</td>
+					<td>' . $teammate1 . '</td>
+					<td>' . $teammate2 . '</td>
+					<td>' . $teammate3 . '</td>
+					<td>' . $teammate4 . '</td>
+					<td>' . $teammate5 . '</td>
+					<td>' . $teammate6 . '</td>
 				</tr> ';
 			}
 			echo '</tbody>
