@@ -159,6 +159,11 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('generate_teams', array('as'=>'generate_teams', function() 
 	{
+		return Redirect::to('admin_generate_teams');
+	}));
+
+	Route::get('admin_generate_teams', array('before'=>'admin', function() // admin only
+	{
 		$projects = Project::all();
 		$users = User::all();
 		$preferences = Preference::all();
@@ -175,6 +180,11 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('edit_teams', array('as'=>'edit_teams', function() 
 	{
+		return Redirect::to('admin_edit_teams');
+	}));
+
+	Route::get('admin_edit_teams', array('before'=>'admin', function() // admin only
+	{
 		$team = new Team;
 		$projects = Project::lists('title', 'id');
 		$preferences = Preference::all();
@@ -189,6 +199,7 @@ Route::group(array('before'=>'auth'), function() {
 			->with('teammates', $teammates)
 			->with('student_pool', $student_pool)
 			->with('method', 'post');
+
 	}));
 
 	Route::post('all_teams', function() {
