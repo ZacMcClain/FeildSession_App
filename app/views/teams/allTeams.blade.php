@@ -16,7 +16,66 @@
 				$count = 0;
 				foreach($preferences as $pref) {
 					if(in_array($pref->user['id'], $student_pool)) {
+
+						$i = 0; 
+						$friends = array();
+						foreach($teammates as $teammate) {
+							if($teammate->person1_id == $pref->user['id']) {
+								array_push($friends, $teammate->person2_id);
+							}
+						}
+
 						if($pref->firstChoice == $project->id && $count < $project->max) {
+
+							if(!empty($friends)) {
+								foreach($friends as $friend) {
+									if(in_array($friend, $student_pool)) {
+										$i = 0; 
+										$their_projects = array();
+										foreach($preferences as $their_pref) {
+											if($friend == $their_pref->user['id']) {
+												array_push($their_projects, $their_pref->firstChoice);
+												array_push($their_projects, $their_pref->secondChoice);
+												array_push($their_projects, $their_pref->thirdChoice);
+												array_push($their_projects, $their_pref->fourthChoice);
+											}
+										}
+
+										if(in_array($project->id, $their_projects)) {
+											$members[$count] = $friend;
+											$count++;	
+											unset($student_pool[array_search($friend, $student_pool)]);							
+										}
+									}
+								}
+							}
+							
+							$members[$count] = $pref->user['id'];
+							$count++;
+							unset($student_pool[$pref->user['id']-1]);
+						}
+					}
+				}
+
+					{{ DB::table('team')->insertGetId(
+						array('project_id' => $project->id, 
+						'person1_id' => $members[0], 
+						'person2_id' => $members[1], 
+						'person3_id' => $members[2], 
+						'person4_id' => $members[3], 
+						'person5_id' => $members[4],
+						'person6_id' => $members[5]
+					)); }}
+
+			}
+
+			if(!empty($student_pool)) {
+				foreach($projects as $project) {
+				$members = array_fill(0, 6, -1);
+				$count = 0;
+				foreach($preferences as $pref) {
+					if(in_array($pref->user['id'], $student_pool)) {
+						if($pref->seconfChoice == $project->id && $count < $project->max) {
 							$members[$count] = $pref->user['id'];
 							$count++;
 							unset($student_pool[$pref->user['id']-1]);
@@ -44,6 +103,7 @@
 						'person6_id' => $members[5]
 					)); }}
 
+			}
 			}
 		}
 
