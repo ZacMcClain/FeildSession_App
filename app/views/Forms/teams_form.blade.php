@@ -41,7 +41,7 @@
 				</div>
 			</div>
 		</div>
-
+		{{Form::submit("Submit", array("class"=>"btn btn-default"))}}
 	{{ Form::close() }}
 </div>
 

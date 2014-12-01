@@ -18,34 +18,9 @@ class Team extends Eloquent
 		return $this->belongsTo('Project');
 	}
 
-	public function person1()
+	public function person() // not used
 	{
-		return $this->hasMany('User');
-	}
-
-	public function person2()
-	{
-		return $this->hasMany('User');
-	}
-
-	public function person3()
-	{
-		return $this->hasMany('User');
-	}
-
-	public function person4()
-	{
-		return $this->hasMany('User');
-	}
-
-	public function person5()
-	{
-		return $this->hasMany('User');
-	}
-
-	public function person6()
-	{
-		return $this->hasMany('User');
+		return $this->belongsToMany('User');
 	}
 }
 

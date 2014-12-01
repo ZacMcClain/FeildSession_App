@@ -4,7 +4,6 @@
 
 	<h2>Admin View</h2>
 
-
 @stop
 
 @section('content')
@@ -58,7 +57,6 @@
 
 <div class="group col-md-7">
 	<h3>Preferences:</h3>
-	
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -72,7 +70,6 @@
 			</tr>
 		</thead>
 		<tbody>
-		
 		@foreach($preferences as $preference)
 			<tr>
 				<td>{{ $preference->user['firstName'] }} {{ $preference->user['lastName'] }}</td>
@@ -93,11 +90,38 @@
 				@endif
 			</tr>
 		@endforeach
-
 		</tbody>
 	</table>
-
 </div>
+<div class="group col-md-8">
+	<h3> Students: </h3>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>Name</th>
+				<th>Email Address</th>
+				<th>Admin Rights</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach($users as $user)
+			<tr>
+				<td>{{$user->id}}</td>
+				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
+				<td>{{$user->email}}</td>
+				@if ($user->is_admin == 1)
+					<td>Yes</td>
+				@else
+					<td>No</td>
+				@endif
+			</tr>
+		@endforeach
+		</tbody>
+	</table>
+</div>
+
+
 
 <br>
 

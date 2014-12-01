@@ -2,7 +2,12 @@
 
 @section('header')
 
-<h2> Setting Your Project Preferences </h2>
+<h2> Setting Your Preferences </h2>
+<p class='small'>
+	<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+	Denotes a required feild
+</p>
+
 @stop
 
 @section('content')
@@ -12,18 +17,23 @@
 		<div class="input-group">
 			<span class="glyphicon glyphicon-info-sign"></span>
 			{{ Form::label('Major, Minor/Asi:') }}
-
 			{{ Form::text('major', '',
 				array('class' => 'form-control', 'id' =>'focusedInput', 'placeholder'=>'Your Major? (Required)')) }}
-			<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+			@if ($errors->has('major'))
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style='color: red;'></span>
+				<span class="sr-only">Error:</span>
+			@else
+				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+			@endif
 			{{ Form::text('minor', '',
 				array('class' => 'form-control', 'id' =>'focusedInput', 'placeholder'=>'Your Minor or ASI? (optional)')) }}
+
 		</div>
 		<br>
 		<div class="container-fluid" id="push"></div>
 		<div class="form-group">
 			<br>
-			<div>
+			<div class="">
 				<span class="glyphicon glyphicon-question-sign"></span>
 				{{ Form::label('Project Choices:') }} 
 			</div>				
@@ -33,22 +43,37 @@
 			</p>
 			<div class='input-group'>
 				1)
-				{{ Form::select('firstChoice',  $projects_list) }}
-				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				{{ Form::select('firstChoice', array_merge([null => 'Unselected'], $projects_list), null) }}
+				@if ($errors->has('major'))
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style='color: red;'></span>
+					<span class="sr-only">Error:</span>
+				@else
+					<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				@endif
 				<br>
 				<br>
 				2)
-				{{ Form::select('secondChoice',  $projects_list) }}
-				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				{{ Form::select('secondChoice', array_merge([null => 'Unselected'], $projects_list), null) }}
+				@if ($errors->has('major'))
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style='color: red;'></span>
+					<span class="sr-only">Error:</span>
+				@else
+					<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				@endif
 				<br>
 				<br>
 				3)
-				{{ Form::select('thirdChoice', $projects_list) }}
-				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				{{ Form::select('thirdChoice', array_merge([null => 'Unselected'], $projects_list), null) }}
+				@if ($errors->has('major'))
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style='color: red;'></span>
+					<span class="sr-only">Error:</span>
+				@else
+					<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				@endif
 				<br>
 				<br>
 				4)
-				{{ Form::select('fourthChoice', array_merge(['Unselected'], $projects_list), 1) }}
+				{{ Form::select('fourthChoice', array_merge([null => 'Unselected'], $projects_list), null) }}
 			</div>
 		</div>
 		<div class="container-fluid" id="push"></div>
@@ -62,12 +87,18 @@
 				</p>
 				{{ Form::select('mostImportant', 
 						[
+						null => 'Unselected',
 	   					'project' => 'Project',
 	   					'team' => 'Team',
 	  					'dontCare' => 'Does Not Matter'
 	  					]
 				) }}
-				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				@if ($errors->has('major'))
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style='color: red;'></span>
+					<span class="sr-only">Error:</span>
+				@else
+					<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
+				@endif
 			</div>
 			<div class="form-group col-sm-6">
 				<span class="glyphicon glyphicon-question-sign"></span>
@@ -76,11 +107,14 @@
 					Please share any other experience, skill or goals that might
 					be relevant to your project choices. 
 				</p>
-				{{Form::textArea('experience')}}
+				{{ Form::textArea('experience') }}
 			</div>
 		</div>
 		<div class="container-fluid" id="push"></div>
 		<br>
+			<br>
+			{{ Form::hidden('user_id', Auth::user()->id) }}
+
 		<div class='form-group col-lg-12'>
 			<p>
 				<span class='glyphicon glyphicon-asterisk small' style='color: red;'></span>
@@ -90,7 +124,10 @@
 
 		{{Form::hidden('user_id', Auth::user()->id)}}
 
-		{{ Form::submit('Save Preferences') }}
+
+		{{Form::submit("Save Preferences", array("class"=>"btn btn-default"))}}
 
 		{{ Form::close() }}
+
+		<br>
 @stop
