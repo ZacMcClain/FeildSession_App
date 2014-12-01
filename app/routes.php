@@ -52,9 +52,14 @@ Route::group(array('before'=>'auth'), function() {
 		}
 	$user = User::find($id);
 	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
+	$yesTeammates = Teammate::where('person1_id', '=', $id)->where('want_to_work_with', '=', '1')
+	->lists('person2_id');
+	$noTeammates = Teammate::where('person1_id', '=', $id)->where('want_to_work_with', '!=', '1')->lists('person2_id');
 	return View::make('students.single')
 		->with('user', $user)
-		->with('preference', $preference);
+		->with('preference', $preference)
+		->with('yesTeammates', $yesTeammates)
+		->with('noTeammates', $noTeammates);
 	});
 	
 	Route::get('students/{id}/edit', function ($id)

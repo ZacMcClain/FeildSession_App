@@ -45,5 +45,18 @@ Team or Project Preference: {{$preference['mostImportant']}}
 <br>
 Helpful Info: {{$preference['experience']}}
 <br>
-
+</div>
+<div class="container-fluid" id="push"></div>
+<div class="form-group">
+Desired Teammates: 
+@foreach($yesTeammates as $yes)
+		<li>{{ $yes }}</li>
+@endforeach
+<br>
+Undesired Teammates: 
+@foreach($noTeammates as $no)
+		<li>{{ $no }}</li>
+@endforeach
+<br>
+</div>
 @stop
