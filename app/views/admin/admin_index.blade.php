@@ -11,16 +11,51 @@
 <div class="jumbotron">
 	<h3>Team Generating Algorithm:</h3>
 	<br>
-	<p>
+	<p> 
+	<small>
 		The following button will activate the team generation algorithm and
 		will take you to a page with the newly generated teams. As this
 		sites admin user, you are allowed to edit the results of
 		these automatic team selections.
+	</small>
 	</p>
 	<br>
 	<a href="{{ URL::route('generate_teams') }}" class='btn btn-success' style='width:25%;'>Generate Teams</a>
+	<br>
+	<h3>Manually Create/Edit Teams:</h3>
+	<br>
+	<a href="{{ URL::route('edit_teams') }}" class='btn btn-success' style='width:25%;'>Manually Create/Edit Teams</a>
 </div>
-<div class="group col-md-8">
+
+<div class="group col-md-5">
+	<h3> Students: </h3>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>Name</th>
+				<th>Email Address</th>
+				<th>Admin Rights</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach($users as $user)
+			<tr>
+				<td>{{$user->id}}</td>
+				<td><strong><a href="{{URL::to('admin_student/'.$user->id)}}">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
+				<td>{{$user->email}}</td>
+				@if ($user->is_admin == 1)
+					<td>Yes</td>
+				@else
+					<td>No</td>
+				@endif
+			</tr>
+		@endforeach
+		</tbody>
+	</table>
+</div>
+
+<div class="group col-md-7">
 	<h3>Preferences:</h3>
 	<table class="table table-striped table-bordered">
 		<thead>

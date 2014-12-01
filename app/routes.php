@@ -47,34 +47,54 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('students/{id}', function($id)
 	{
+		if($id != Auth::user()->id) {
+			return Redirect::to('students/'.Auth::user()->id);
+		}
 	$user = User::find($id);
 	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
+	$yesTeammates = Teammate::where('person1_id', '=', $id)->where('want_to_work_with', '=', '1')
+	->lists('person2_id');
+	$noTeammates = Teammate::where('person1_id', '=', $id)->where('want_to_work_with', '!=', '1')->lists('person2_id');
 	return View::make('students.single')
 		->with('user', $user)
-		->with('preference', $preference);
+		->with('preference', $preference)
+		->with('yesTeammates', $yesTeammates)
+		->with('noTeammates', $noTeammates);
 	});
 	
 	Route::get('students/{id}/edit', function ($id)
 	{
-		$projects = Project::all();
 		$projects_list = Project::lists('title', 'id');
 		$id = Auth::user()->id;
 		$user = User::find($id);
-		$preference = Preference::find($user->preference_id);
-		return View::make('students/set_projects')
-			->with('projects', $projects)
+		$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
+		return View::make('students/edit')
 			->with('projects_list', $projects_list)
 			->with('user', $user)
 			->with('preference', $preference)
-			->with('method', 'post');
+			->with('method', 'put');
 		
 	});
+	
+	Route::put('students/{id}', function($id) {
+		$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
+		$preference->update(Input::all());
+		return Redirect::to('students/'.Auth::user()->id)
+		->with('message', 'Successfully updated preferences!');
+});
 
 	Route::get('students/{id}/set_projects', function($id) {
-		$pref = new Preference;
+		$checkPref = Preference::where('user_id', '=', Auth::user()->id)->first();
+		
+		if($checkPref!=null) {
+			return Redirect::to('students/'.Auth::user()->id.'/edit');
+		}
+		
+		$preference = new Preference;
 		$projects_list = Project::lists('title', 'id');
 		return View::make('students/set_projects')
-			->with('pref', $pref)
+			->with('check', $checkPref)
+			->with('preference', $preference)
 			->with('method', 'post')
 			->with('projects_list', $projects_list);
 	});
@@ -132,6 +152,15 @@ Route::group(array('before'=>'auth'), function() {
 			->with('preferences', $preferences)
 			->with('teammates', $teammates);
 	}));
+	
+	Route::get('admin_student/{id}', array('before'=>'admin', function($id) // admin only
+	{
+	$user = User::find($id);
+	$preference = Preference::where('user_id', '=',$id)->first();
+	return View::make('admin/admin_student')
+		->with('user', $user)
+		->with('preference', $preference);
+	}));
 
 	//------------------------| Team Section |------------------------\\
 
@@ -164,6 +193,39 @@ Route::group(array('before'=>'auth'), function() {
 			->with('generateTeams', 1);
 	}));
 
+	Route::get('edit_teams', array('as'=>'edit_teams', function() 
+	{
+		$team = new Team;
+		$projects = Project::lists('title', 'id');
+		$preferences = Preference::all();
+		$teammates = Teammate::all();
+		$student_pool = User::lists('id');
+		$users = User::lists('firstName', 'id');
+		return View::make('teams/edit_teams')
+			->with('team', $team)
+			->with('projects', $projects)
+			->with('users', $users)
+			->with('preferences', $preferences)
+			->with('teammates', $teammates)
+			->with('student_pool', $student_pool)
+			->with('method', 'post');
+	}));
+
+	Route::post('all_teams', function() {
+		$project_id = Input::get('project_id');
+		DB::table('team')->where('project_id', $project_id)->delete();
+		DB::table('team')->insertGetId(
+						array('project_id' => $project_id, 
+						'person1_id' => Input::get('person1_id'), 
+						'person2_id' => Input::get('person2_id'), 
+						'person3_id' => Input::get('person3_id'), 
+						'person4_id' => Input::get('person4_id'), 
+						'person5_id' => Input::get('person5_id'),
+						'person6_id' => Input::get('person6_id')
+						));
+		return Redirect::to('all_teams')
+			->with('message', 'Successfully saved team!');
+	});
 
 });
 
