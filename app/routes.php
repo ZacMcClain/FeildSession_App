@@ -129,7 +129,7 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('students/{id}/set_teammates', function($id) {
 		$teammate = new Teammate;
-		$user_list = User::lists('firstName', 'id');
+		$user_list = User::where('is_admin', '!=', '1')->lists('firstName', 'id');
 		return View::make('students/set_teammates')
 			->with('teammate', $teammate)
 			->with('method', 'post')
