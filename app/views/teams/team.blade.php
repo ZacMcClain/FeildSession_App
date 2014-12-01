@@ -37,25 +37,69 @@
 				<tr>
 					<th>Project</th>
 					<th>Member 1</th>
-					<th>Member 2</th>
-					<th>Member 3</th>
-					<th>Member 4</th>
-					<th>Member 5</th>
-					<th>Member 6</th>
-				</tr>
+					<th>Member 2</th>';
+					if ($myTeam->person3_id != -1)
+						echo '<th>Member 3</th>';
+					if ($myTeam->person4_id != -1)
+						echo '<th>Member 4</th>';
+					if ($myTeam->person5_id != -1)
+						echo '<th>Member 5</th>';
+					if ($myTeam->person6_id != -1)
+						echo '<th>Member 6</th>';
+				echo '</tr>
 			</thead>
 			<tbody>';
 				$proj = DB::table('projects')->where('id', '=', $myTeam->project_id)->first();
 				
-				echo '<tr>
-					<td>'.$proj->title.'</td>
-					<td>'.$myTeam->person1_id.'</td>
-					<td>'.$myTeam->person2_id.'</td>
-					<td>'.$myTeam->person3_id.'</td>
-					<td>'.$myTeam->person4_id.'</td>
-					<td>'.$myTeam->person5_id.'</td>
-					<td>'.$myTeam->person6_id.'</td>
-				</tr> ';
+				if($myTeam->person1_id != -1){
+					$teammate1 = $users->find($myTeam->person1_id)['firstName'] . " " . $users->find($myTeam->person1_id)['lastName'];
+				} else {
+					$teammate1 = "-------";
+				}
+
+				if($myTeam->person2_id != -1){
+					$teammate2 = $users->find($myTeam->person2_id)['firstName'] . " " . $users->find($myTeam->person2_id)['lastName'];
+				} else {
+					$teammate2 = "-------";
+				}
+
+				if($myTeam->person3_id != -1){
+					$teammate3 = $users->find($myTeam->person3_id)['firstName'] . " " . $users->find($myTeam->person3_id)['lastName'];
+				} else {
+					$teammate3 = "-------";
+				}
+
+				if($myTeam->person4_id != -1){
+					$teammate4 = $users->find($myTeam->person4_id)['firstName']  . " " . $users->find($myTeam->person4_id)['lastName'];
+				} else {
+					$teammate4 = "-------";
+				}
+
+				if($myTeam->person5_id != -1){
+					$teammate5 = $users->find($myTeam->person5_id)['firstName']  . " " . $users->find($myTeam->person5_id)['lastName'];
+				} else {
+					$teammate5 = "-------";
+				}
+
+				if($myTeam->person6_id != -1){
+					$teammate6 = $users->find($myTeam->person6_id)['firstName']  . " " . $users->find($myTeam->person6_id)['lastName'];
+				} else {
+					$teammate6 = "-------";
+				}
+
+				echo '<tr>';
+				echo '<td>' . $proj->title . '</td>';
+				echo '<td>' . $teammate1 . '</td>';
+				echo '<td>' . $teammate2 . '</td>';
+				if ($myTeam->person3_id != -1)
+					echo '<td>' . $teammate3 . '</td>';
+				if ($myTeam->person4_id != -1)
+					echo '<td>' . $teammate4 . '</td>';
+				if ($myTeam->person5_id != -1)
+					echo '<td>' . $teammate5 . '</td>';
+				if ($myTeam->person6_id != -1)
+					echo '<td>' . $teammate6 . '</td>';
+				echo '</tr>';
 			echo '</tbody>
 		</table>
 		</div> ';

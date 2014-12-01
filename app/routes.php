@@ -166,7 +166,10 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('my_team', function()
 	{
-		return View::make('teams/team');
+		$users = User::all();
+		return View::make('teams/team')
+		->with('users', $users);
+
 	});
 
 	Route::get('all_teams', array('before'=>'admin', function() // admin only

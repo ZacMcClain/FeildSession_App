@@ -130,42 +130,43 @@
 				</tr>
 			</thead>
 			<tbody>';
+
 			foreach($teams as $team) {
 
 				$proj = DB::table('projects')->where('id', '=', $team->project_id)->first();
 
 				if($team->person1_id != -1){
-					$teammate1 = $users->find($team->person1_id)['firstName'];
+					$teammate1 = $users->find($team->person1_id)['firstName'] . " " . $users->find($team->person1_id)['lastName'];
 				} else {
 					$teammate1 = "-------";
 				}
 
 				if($team->person2_id != -1){
-					$teammate2 = $users->find($team->person2_id)['firstName'];
+					$teammate2 = $users->find($team->person2_id)['firstName'] . " " . $users->find($team->person2_id)['lastName'];
 				} else {
 					$teammate2 = "-------";
 				}
 
 				if($team->person3_id != -1){
-					$teammate3 = $users->find($team->person3_id)['firstName'];
+					$teammate3 = $users->find($team->person3_id)['firstName'] . " " . $users->find($team->person3_id)['lastName'];
 				} else {
 					$teammate3 = "-------";
 				}
 
 				if($team->person4_id != -1){
-					$teammate4 = $users->find($team->person4_id)['firstName'];
+					$teammate4 = $users->find($team->person4_id)['firstName']  . " " . $users->find($team->person4_id)['lastName'];
 				} else {
 					$teammate4 = "-------";
 				}
 
 				if($team->person5_id != -1){
-					$teammate5 = $users->find($team->person5_id)['firstName'];
+					$teammate5 = $users->find($team->person5_id)['firstName']  . " " . $users->find($team->person5_id)['lastName'];
 				} else {
 					$teammate5 = "-------";
 				}
 
 				if($team->person6_id != -1){
-					$teammate6 = $users->find($team->person6_id)['firstName'];
+					$teammate6 = $users->find($team->person6_id)['firstName']  . " " . $users->find($team->person6_id)['lastName'];
 				} else {
 					$teammate6 = "-------";
 				}
