@@ -2,8 +2,8 @@
 <html lang="en">
 
 	<head>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css" />
-		<!-- <script type="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css"/>
+		<script type="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 		<title>Field Session Helper</title>
 		<style type="text/css">
 			* {
@@ -86,9 +86,14 @@
 					</div>
 				@endif
 
-				@if(Session::has('error'))
+				@if(Session::has('errors'))
 					<div class="alert alert-warning">
-						{{Session::get('error')}}
+					@if ($errors->has())
+						@foreach ($errors->all() as $error)
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							{{ $error }} <br>
+						@endforeach
+					@endif
 					</div>
 				@endif		
 				@yield('content')

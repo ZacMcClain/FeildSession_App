@@ -48,7 +48,7 @@ Route::group(array('before'=>'auth'), function() {
 	Route::get('students/{id}', function($id)
 	{
 	$user = User::find($id);
-	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();;
+	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
 	return View::make('students.single')
 		->with('user', $user)
 		->with('preference', $preference);
@@ -79,6 +79,30 @@ Route::group(array('before'=>'auth'), function() {
 			->with('projects_list', $projects_list);
 	});
 
+	Route::post('students/{id}', function() {
+		$inputs = Input::all();
+		$rules = array(
+			'major'=>'required',
+			'firstChoice' =>'required',
+			'secondChoice'=>'required',
+			'thirdChoice'=>'required',
+			'mostImportant'=>'required'
+
+		);
+		$validator = Validator::make($inputs, $rules);
+		
+		if ($validator->fails()) {
+			$messages = $validator->messages();
+			return Redirect::to('students/'.Auth::user()->id.'/set_projects')
+				->withErrors($validator);
+		} else {
+			$pref = Preference::create($inputs);
+			return Redirect::to('students/'.Auth::user()->id)
+				->with('message', 'Successfully set your preferences!');
+		}
+
+	});
+
 	Route::get('students/{id}/set_teammates', function($id) {
 		$teammate = new Teammate;
 		$user_list = User::lists('firstName', 'id');
@@ -86,12 +110,6 @@ Route::group(array('before'=>'auth'), function() {
 			->with('teammate', $teammate)
 			->with('method', 'post')
 			->with('user_list', $user_list);
-	});
-
-	Route::post('students/{id}', function() {
-		$pref = Preference::create(Input::all());
-		return Redirect::to('students/'.Auth::user()->id)
-			->with('message', 'Successfully set your preferences!');
 	});
 
 		Route::post('students', function() {
@@ -124,7 +142,9 @@ Route::group(array('before'=>'auth'), function() {
 
 	Route::get('all_teams', array('before'=>'admin', function() // admin only
 	{
+		$users = User::all();
 		return View::make('teams/AllTeams')
+			->with('users', $users)
 			->with('generateTeams', 0);
 	}));
 

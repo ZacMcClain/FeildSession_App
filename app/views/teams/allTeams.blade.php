@@ -35,18 +35,20 @@
 				}
 
 					{{ DB::table('team')->insertGetId(
-						array('project_id' => $project->id, 
-						'person1_id' => $members[0], 
-						'person2_id' => $members[1], 
-						'person3_id' => $members[2], 
-						'person4_id' => $members[3], 
-						'person5_id' => $members[4],
-						'person6_id' => $members[5]
-					)); }}
+						array(
+							'project_id' => $project->id, 
+							'person1_id' => $members[0], 
+							'person2_id' => $members[1], 
+							'person3_id' => $members[2], 
+							'person4_id' => $members[3], 
+							'person5_id' => $members[4],
+							'person6_id' => $members[5]
+						)); 
+					}}
 
 			}
 		}
-		
+
 	 {{ $teams = DB::table('team')->get(); }}
 
 	if(empty($teams)) {

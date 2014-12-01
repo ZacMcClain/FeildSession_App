@@ -32,7 +32,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 								'lastName',
 								'CWID',
 								'email',
-								'preference_id'
+								'preference_id',
+								'team_id'
 							);
 
 	public function isAdmin() // used to hide elements from non-admin users
@@ -41,6 +42,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			return TRUE;
 		else
 			return FALSE;
+	}
+
+	public function sayName()
+	{
+		return $this->firstName . " " . $this->lastName;
+	}
+
+	public function team()
+	{
+		return $this->belongsTo('team');
 	}
 
 	public function preference() // used to make a connection between users and books

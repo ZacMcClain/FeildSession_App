@@ -12,7 +12,7 @@
 		<span class="glyphicon glyphicon-edit"></span>Edit Project Preferences
 	</a>
 	@endif
-
+	<br>
 	<a href="{{URL::to('students/'.Auth::user()->id.'/set_teammates')}}">
 		<span class="glyphicon glyphicon-edit"></span>Add Teammate Preference
 	</a>
