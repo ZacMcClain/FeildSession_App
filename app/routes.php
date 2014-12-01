@@ -50,13 +50,17 @@ Route::group(array('before'=>'auth'), function() {
 		if($id != Auth::user()->id) {
 			return Redirect::to('students/'.Auth::user()->id);
 		}
+	$users = User::all();
 	$user = User::find($id);
+	$projects = Project::all();
 	$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
 	$yesTeammates = Teammate::where('person1_id', '=', $id)->where('want_to_work_with', '=', '1')
 	->lists('person2_id');
 	$noTeammates = Teammate::where('person1_id', '=', $id)->where('want_to_work_with', '!=', '1')->lists('person2_id');
 	return View::make('students.single')
+		->with('users', $users)
 		->with('user', $user)
+		->with('projects', $projects)
 		->with('preference', $preference)
 		->with('yesTeammates', $yesTeammates)
 		->with('noTeammates', $noTeammates);
@@ -80,7 +84,7 @@ Route::group(array('before'=>'auth'), function() {
 		$preference = Preference::where('user_id', '=', Auth::user()->id)->first();
 		$preference->update(Input::all());
 		return Redirect::to('students/'.Auth::user()->id)
-		->with('message', 'Successfully updated preferences!');
+			->with('message', 'Successfully updated preferences!');
 });
 
 	Route::get('students/{id}/set_projects', function($id) {

@@ -22,40 +22,54 @@
 @section('content')
 <br>
 <div class="form-group">
-Major: {{$preference['major']}}
-<br>
-Minor: {{$preference['minor']}}
-<br>
+	Major: {{$preference['major']}}
+	<br>
+	@if ($preference['minor'])
+		Minor: {{$preference['minor']}}
+	@else
+		Minor: None Selected
+	@endif
+	<br>
 </div>
 <div class="container-fluid" id="push"></div>
 <div class="form-group">
-First Preference: {{$preference['firstChoice']}}
-<br>
-Second Preference: {{$preference['secondChoice']}}
-<br>
-Third Preference: {{$preference['thirdChoice']}}
-<br>
-Fourth Preference (Optional): {{$preference['fourthChoice']}}
-<br>
+	<br>
+	First Preference: {{ $projects->find($preference['firstChoice'])['title'] }}
+	<br>
+	Second Preference: {{ $projects->find($preference['secondChoice'])['title'] }}
+	<br>
+	Third Preference: {{ $projects->find($preference['thirdChoice'])['title'] }}
+	<br>
+	@if ( $projects->find($preference['fourthChoice'])['title'] )
+		Fourth Preference (Optional): {{ $projects->find($preference['fourthChoice'])['title'] }}
+	@else
+		Fourth Preference (Optional): None Selected
+	@endif
+	<br>
 </div>
 <div class="container-fluid" id="push"></div>
 <div class="form-group">
-Team or Project Preference: {{$preference['mostImportant']}}
-<br>
-Helpful Info: {{$preference['experience']}}
-<br>
+	<br>
+	Team or Project Preference: {{ $preference['mostImportant'] }}
+	<br>
+	Helpful Info: {{$preference['experience']}}
+	<br>
 </div>
 <div class="container-fluid" id="push"></div>
 <div class="form-group">
-Desired Teammates: 
-@foreach($yesTeammates as $yes)
-		<li>{{ $yes }}</li>
-@endforeach
-<br>
-Undesired Teammates: 
-@foreach($noTeammates as $no)
-		<li>{{ $no }}</li>
-@endforeach
-<br>
+	<br>
+	Desired Teammates:
+	<ul>
+		@foreach($yesTeammates as $yes)
+				<li>{{ $users->find($yes)['firstName'] . ' ' . $users->find($yes)['lastName'] }}</li>
+		@endforeach
+	</ul>
+	Undesired Teammates: 
+	<ul>
+		@foreach($noTeammates as $no)
+			<li>{{ $users->find($no)['firstName'] . ' ' . $users->find($no)['lastName'] }}</li>
+		@endforeach
+	</ul>
+	<br>
 </div>
 @stop

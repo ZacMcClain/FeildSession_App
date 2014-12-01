@@ -12,12 +12,12 @@
 	<h3>Team Generating Algorithm:</h3>
 	<br>
 	<p> 
-	<small>
-		The following button will activate the team generation algorithm and
-		will take you to a page with the newly generated teams. As this
-		sites admin user, you are allowed to edit the results of
-		these automatic team selections.
-	</small>
+		<small>
+			The following button will activate the team generation algorithm and
+			will take you to a page with the newly generated teams. As this
+			sites admin user, you are allowed to edit the results of
+			these automatic team selections.
+		</small>
 	</p>
 	<br>
 	<a href="{{ URL::route('generate_teams') }}" class='btn btn-success' style='width:25%;'>Generate Teams</a>
@@ -27,35 +27,7 @@
 	<a href="{{ URL::route('edit_teams') }}" class='btn btn-success' style='width:25%;'>Manually Create/Edit Teams</a>
 </div>
 
-<div class="group col-md-5">
-	<h3> Students: </h3>
-	<table class="table table-striped table-bordered">
-		<thead>
-			<tr>
-				<th>Student ID</th>
-				<th>Name</th>
-				<th>Email Address</th>
-				<th>Admin Rights</th>
-			</tr>
-		</thead>
-		<tbody>
-		@foreach($users as $user)
-			<tr>
-				<td>{{$user->id}}</td>
-				<td><strong><a href="{{URL::to('admin_student/'.$user->id)}}">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
-				<td>{{$user->email}}</td>
-				@if ($user->is_admin == 1)
-					<td>Yes</td>
-				@else
-					<td>No</td>
-				@endif
-			</tr>
-		@endforeach
-		</tbody>
-	</table>
-</div>
-
-<div class="group col-md-7">
+<div class="group">
 	<h3>Preferences:</h3>
 	<table class="table table-striped table-bordered">
 		<thead>
@@ -73,12 +45,11 @@
 		@foreach($preferences as $preference)
 			<tr>
 				<td>{{ $preference->user['firstName'] }} {{ $preference->user['lastName'] }}</td>
-				<td>{{ $preference->firstChoice }}</td>
-				
-				<td>{{ $preference->secondChoice }}</td>
-				<td>{{ $preference->thirdChoice }}</td>
+				<td>{{ $projects->find($preference->firstChoice)['title'] . " (" . $preference->firstChoice . ")" }}</td>
+				<td>{{ $projects->find($preference->secondChoice)['title'] . " (" . $preference->secondChoice . ")" }}</td>
+				<td>{{ $projects->find($preference->thirdChoice)['title'] . " (" . $preference->thirdChoice . ")" }}</td>
 				@if ($preference->fourthChoice != NULL)
-					<td>{{ $preference->fourthChoice }}</td>
+					<td>{{ $projects->find($preference->fourthChoice)['title'] . " (" . $preference->fourthChoice . ")" }}</td>
 				@else
 					<td>NA</td>
 				@endif
@@ -93,6 +64,7 @@
 		</tbody>
 	</table>
 </div>
+
 <div class="group col-md-8">
 	<h3> Students: </h3>
 	<table class="table table-striped table-bordered">
@@ -107,9 +79,9 @@
 		<tbody>
 		@foreach($users as $user)
 			<tr>
-				<td>{{$user->id}}</td>
-				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{$user->firstName}} {{$user->lastName}}</a></strong></td>
-				<td>{{$user->email}}</td>
+				<td>{{ $user->id }}</td>
+				<td><strong><a href="{{URL::to('students/'.$user->id)}}">{{ $user->firstName }} {{ $user->lastName }}</a></strong></td>
+				<td>{{ $user->email }}</td>
 				@if ($user->is_admin == 1)
 					<td>Yes</td>
 				@else
@@ -121,11 +93,9 @@
 	</table>
 </div>
 
-
-
 <br>
 
-<div class="group col-md-7">
+<div class="group col-md-6">
 	<h3>Team Preferences:</h3>
 	<table class="table table-striped table-bordered">
 		<thead>

@@ -82,12 +82,18 @@
 				</div>
 				@if(Session::has('message'))
 					<div class="alert alert-success">
-						{{Session::get('message')}}
+						{{ Session::get('message') }}
+					</div>
+				@endif
+
+				@if(Session::has('error'))
+					<div class="alert alert-warning">
+						{{ Session::get('error') }}
 					</div>
 				@endif
 
 				@if(Session::has('errors'))
-					<div class="alert alert-warning">
+					<div class="alert alert-danger">
 					@if ($errors->has())
 						@foreach ($errors->all() as $error)
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
