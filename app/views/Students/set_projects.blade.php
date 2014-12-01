@@ -112,32 +112,6 @@
 		</div>
 		<div class="container-fluid" id="push"></div>
 		<br>
-
-			<span class="glyphicon glyphicon-ok-sign"></span>
-			{{ Form::label('People I want to work with:') }}
-			<div class='input-group'>
-				{{ Form::text('work_with', '', 
-					array('class' => 'form-control', 'id' =>'focusedInput', 'placeholder'=>'Who would you like to work with?')) }}
-				<div class='input-group-btn'>
-					<a class="btn btn-default" href="#">
-						<span class='glyphicon glyphicon-plus'></span>
-						<span class="glyphicon glyphicon-user"></span>
-					</a>
-				</div>
-			</div>
-			<br>
-			<span class="glyphicon glyphicon-remove-sign"></span>
-			{{ Form::label('People I don\'t want to work with:') }} 
-			<div class='input-group'>
-				{{ Form::text('unworkable', "", 
-					array('class' => 'form-control', 'id' =>'focusedInput', 'placeholder'=>'Who would you perfer not to work with?')) }}
-				<div class='input-group-btn'>
-					<a class="btn btn-default" href="#">
-						<span class='glyphicon glyphicon-plus'></span>
-						<span class="glyphicon glyphicon-user"></span>
-					</a>
-				</div>
-			</div>
 			<br>
 			{{ Form::hidden('user_id', Auth::user()->id) }}
 
