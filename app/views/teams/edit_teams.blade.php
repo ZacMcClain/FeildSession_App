@@ -18,7 +18,7 @@
 	{{ Form::label('Members:') }}<br>
 	{{ Form::select('person1_id', $users) }} <br>
 	{{ Form::select('person2_id', $users) }} <br>
-	{{ Form::select('person3_id', array_merge(['None'], $users) }} <br>
+	{{ Form::select('person3_id', array_merge(['None'], $users), 1) }} <br>
 	{{ Form::select('person4_id', array_merge(['None'], $users), 1) }} <br>
 	{{ Form::select('person5_id', array_merge(['None'], $users), 1) }} <br>
  	{{ Form::select('person6_id', array_merge(['None'], $users), 1) }} <br>
